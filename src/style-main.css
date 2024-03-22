@@ -1,0 +1,56 @@
+.side_navbar_wrapper.d-flex.px-4.py-2.justify-content-between.side_navbar_wrapper {
+  background-color: #4544df;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+.btn_secondary {
+  background-color: #fff !important;
+  color: var(--cs-primary_bg_color) !important;
+  border: none !important;
+}
+.btn_secondary:hover {
+  color: black !important;
+}
+
+.btn_primary {
+  /* background-image: linear-gradient(
+    to right,
+    var(--gard_color1),
+    var(--gard_color2)
+  ); */
+  background-image: linear-gradient(
+    to right,
+    #f05a76,
+    #f6a63d
+  ); /* Example gradient */
+  color: white; /* Text color to ensure readability */
+  padding: 8px 15px; /* Adjust padding as needed */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Add rounded corners */
+}
+.btn_primary:hover {
+  background-image: linear-gradient(
+    to right,
+    black,
+    black
+  ); /* Example with slightly darker colors */
+  /* color: black; */
+}
+
+.gradient-text {
+  background-image: linear-gradient(
+    to right,
+    #f05a76,
+    #f6a63d
+  ); /* Example gradient */
+  color: transparent; /* Make text invisible initially */
+  -webkit-background-clip: text; /* Clip background to the text shape (WebKit browsers) */
+  background-clip: text; /* Clip background to the text shape (modern browsers) */
+  text-fill-color: transparent; /* Fill text with the gradient (WebKit browsers) */
+}
+
+.gradient-text:hover {
+  color: black;
+}

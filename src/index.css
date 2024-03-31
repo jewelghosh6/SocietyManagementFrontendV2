@@ -72,3 +72,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.link_text_color{
+color: #4544df;
+}

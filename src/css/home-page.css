@@ -1,0 +1,25 @@
+@media (max-width:768px){
+    .auth_buttons_home{
+        display: none !important;
+    }
+    .auth_acc_dropdow > .dropdown > .dropdown-toggle.dropdown-toggle.btn
+    {
+        display: inline;
+       border: none !important;
+       background-color: #fff !important;
+    }
+    .dropdown-toggle::after{
+        display: none !important;
+    }
+}
+
+@media (min-width:769px){
+    .auth_acc_dropdow > .dropdown > .dropdown-toggle.dropdown-toggle.btn
+    {
+        display: none !important;
+    }
+    .auth_buttons_home{
+        position: absolute;
+        right: 31px;    }
+    
+}

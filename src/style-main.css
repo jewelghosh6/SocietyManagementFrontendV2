@@ -54,3 +54,19 @@
 .gradient-text:hover {
   color: black;
 }
+input.form-control{
+  border: none;
+  background-color: aliceblue;
+}
+input.form-control:focus{
+  border: none !important;
+  outline: none !important;
+
+
+}
+.form-floating.mb-3 {
+
+}
+.color_blue_hover:hover{
+color: #5755FE;
+}

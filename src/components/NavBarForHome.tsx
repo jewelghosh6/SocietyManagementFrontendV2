@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import DropdownForHome from "./DropdownForHome";
 
 const NavBarForHome = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const NavBarForHome = () => {
           </h3>
         </a>
       </div>
-      <div className="auth_options d-flex">
+      <div className="auth_buttons_home d-flex">
         <div className="sign_in me-3">
           <button
             className="btn_secondary"
@@ -28,6 +29,9 @@ const NavBarForHome = () => {
             <span>Sign Up</span>
           </button>
         </div>
+      </div>
+      <div className="auth_acc_dropdow">
+        <DropdownForHome />
       </div>
     </div>
   );

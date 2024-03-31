@@ -1,15 +1,33 @@
+import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
-interface SignUpObject {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+// interface SignUpObject {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   password: string;
+// }
 
 const SignUpPage = () => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate()
+  const submitFormData = async (data: any) => {
+    try {
+      let resp = await axios.post(`http://192.168.23.207:3001/user/register`, data);
+      return resp;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error; // Re-throw the error to trigger toast.promise's error handling
+    }
+  }
   const formSubmitHandler = (data: FieldValues) => {
-    console.log(data);
+
+    toast.promise(submitFormData(data), {
+      loading: "Loading...",
+      success: (response) => response?.data.message,
+      error: (error) => error?.response?.data.message
+    });
   };
   return (
     <>
@@ -37,13 +55,8 @@ const SignUpPage = () => {
             style={{ minHeight: "100vh" }}
           >
             <div className="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-              <div className="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
-                <div className="d-flex align-items-center justify-content-between mb-3">
-                  <a href="index.html" className="">
-                    <h3 className="text-primary">
-                      <i className="fa fa-user-edit me-2"></i>DarkPan
-                    </h3>
-                  </a>
+              <div className="shadow rounded p-4 p-sm-5 my-4 mx-3">
+                <div className="text-center mb-3">
                   <h3>Sign Up</h3>
                 </div>
                 <form onSubmit={handleSubmit(formSubmitHandler)}>
@@ -98,20 +111,19 @@ const SignUpPage = () => {
                         className="form-check-label"
                         htmlFor="exampleCheck1"
                       >
-                        Check me out
-                      </label>
+                        Remember me                      </label>
                     </div>
-                    <a href="">Forgot Password</a>
+                    {/* <a href="">Forgot Password</a> */}
                   </div>
                   <button
                     type="submit"
-                    className="btn btn-primary py-3 w-100 mb-4"
+                    className=" btn_primary assss py-3 w-100 mb-4"
                   >
-                    Sign Up
+                    <span className="text-white">Sign Up</span>
                   </button>
                 </form>
                 <p className="text-center mb-0">
-                  Already have an Account? <a href="">Sign In</a>
+                  Already have an Account? <span className="cursor_pointer text-bold link_text_color" onClick={() => navigate("/auth/sign-in")}>Sign In</span>
                 </p>
               </div>
             </div>

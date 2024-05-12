@@ -38,35 +38,78 @@
   ); /* Example with slightly darker colors */
   /* color: black; */
 }
+.bg_gradient {
+  background-image: linear-gradient(to right, #f05a76, #f6a63d);
+}
 
 .gradient-text {
   background-image: linear-gradient(
     to right,
-    #f05a76,
-    #f6a63d
+    #8decb4,
+    #141e46 /* #f05a76,
+    #f6a63d */
   ); /* Example gradient */
   color: transparent; /* Make text invisible initially */
   -webkit-background-clip: text; /* Clip background to the text shape (WebKit browsers) */
   background-clip: text; /* Clip background to the text shape (modern browsers) */
-  text-fill-color: transparent; /* Fill text with the gradient (WebKit browsers) */
+  /* text-fill-color: transparent; /* Fill text with the gradient (WebKit browsers) */
 }
 
 .gradient-text:hover {
   color: black;
 }
-input.form-control{
+input.form-control {
   border: none;
   background-color: aliceblue;
 }
-input.form-control:focus{
+input.form-control:focus {
   border: none !important;
   outline: none !important;
-
-
 }
-.form-floating.mb-3 {
 
+.color_blue_hover:hover {
+  color: #5755fe;
 }
-.color_blue_hover:hover{
-color: #5755FE;
+.font_size_12px {
+  font-size: 12px;
+}
+.py-14px {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.py-6px {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* .row.main_container > * {
+  padding: 0 !important;
+} */
+/* .sidebar.bg_gradient.sidenav_animation.col-3.px-3.pb-5 {
+  padding: 0 !important;
+} */
+.main_container {
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr); */
+  /* gap: 5px; */
+}
+.sidebar {
+  /* grid-column: 1;
+  grid-row: 1/3; */
+}
+.main_section {
+  /* grid-column: 2/5;
+  grid-row: 1 / 3; */
+  /* background-color: #4544df; */
+}
+.role_badge {
+  height: 21px;
+  border-radius: 12px !important;
+  margin: 7px 0 0 7px;
+}
+.font_size_sm {
+  font-size: xx-small !important;
+}
+.sidenav_animation {
+  transition: 0.5s ease-in-out;
 }

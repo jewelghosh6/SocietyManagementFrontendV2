@@ -2,6 +2,7 @@ import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import config from "../environments/config";
 // interface SignUpObject {
 //   firstName: string;
 //   lastName: string;
@@ -14,7 +15,7 @@ const SignUpPage = () => {
   const navigate = useNavigate()
   const submitFormData = async (data: any) => {
     try {
-      let resp = await axios.post(`http://192.168.23.207:3001/user/register`, data);
+      let resp = await axios.post(`${config.API_URL}/user/register`, data);
       return resp;
     } catch (error) {
       console.error('Error fetching data:', error);

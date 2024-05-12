@@ -12,6 +12,13 @@ const NavBarForHome = () => {
           </h3>
         </a>
       </div>
+      <div>
+        <h4
+          className="me-4 cursor_pointer"
+          onClick={() => navigate("/dashboard")}>
+          Dashboard
+        </h4>
+      </div>
       <div className="auth_buttons_home d-flex">
         <div className="sign_in me-3">
           <button

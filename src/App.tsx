@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 import "./App.css";
 import "./css/home-page.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LayoutMain from "./components/LayoutMain";
 import DashBoardComp from "./components/DashBoardComp";
 import FlatsComp from "./components/FlatsComp";
@@ -18,12 +18,16 @@ import SignUpPage from "./pages/SignUpPage";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import NavBarForHome from "./components/NavBarForHome";
 import ManageUsersComp from "./components/ManageUsersComp";
+import RegisterRequestComp from "./components/RegisterRequestComp";
+import ManageUsersInnerLayout from "./components/ManageUsersInnerLayout";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<NavBarForHome />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
+
+        <Route path="/home" element={<NavBarForHome />} />
 
         <Route path="/"  >
           <Route path="/auth/sign-in" element={<SignInPage />} />
@@ -33,7 +37,12 @@ function App() {
 
         <Route path="/" element={<LayoutMain />} >
           <Route path="/dashboard" element={<DashBoardComp />} />
-          <Route path="/manage-users" element={<ManageUsersComp />} />
+
+          <Route path="/manage-users" element={<ManageUsersInnerLayout />} >
+            <Route path="/manage-users/register-request" element={<RegisterRequestComp />} />
+            <Route path="/manage-users" element={<ManageUsersComp />} />
+          </Route>
+
           <Route path="/flats" element={<FlatsComp />} />
           <Route path="/flat-allotment" element={<FaltAllotmentComp />} />
           <Route path="/visitors" element={<VisitorComp />} />

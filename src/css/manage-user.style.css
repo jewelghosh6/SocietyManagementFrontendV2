@@ -1,0 +1,12 @@
+#dropdown-basic {
+  padding: 0 !important;
+  border: 0 !important;
+}
+#dropdown-basic::after {
+  display: none;
+}
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}

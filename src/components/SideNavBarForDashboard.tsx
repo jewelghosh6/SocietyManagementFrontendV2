@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react"
+import { Dispatch, FC, SetStateAction } from "react"
 import { BsCalendarEventFill } from "react-icons/bs"
 import { FaNoteSticky, FaUserSecret } from "react-icons/fa6"
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle, IoIosPeople } from "react-icons/io"
@@ -15,12 +15,17 @@ interface SideNavBarForDashboardProps {
 }
 const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarCollapsed, navBarColapsed }) => {
   const navigate = useNavigate();
+
+  const sidenavTogglehandler = () => {
+    setNavBarCollapsed((prev: boolean) => !prev)
+  }
+
   return (
     < div className={`sidebar bg_gradient sidenav_animation  ${navBarColapsed ? " px-2 pt-2 pb-3" : "  px-3 pb-5"}`
     }
       style={{
-        minWidth: navBarColapsed ? "80px" : "199px",
-        height: "100vh",
+        maxWidth: navBarColapsed ? "81px" : "199px",
+        height: "100%",
         position: "relative",
         top: "0px",
         bottom: "0px"
@@ -33,14 +38,14 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Expand" size={"25px"}
-              onClick={() => setNavBarCollapsed((prev: boolean) => !prev)} /> :
+              onClick={sidenavTogglehandler} /> :
             <IoIosArrowDropleftCircle
               className="cursor_pointer"
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Collapse"
               size={"25px"}
-              onClick={() => setNavBarCollapsed((prev: boolean) => !prev)} />
+              onClick={sidenavTogglehandler} />
           }
         </div>
 
@@ -48,7 +53,7 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
       <div className={navBarColapsed ? "pb-3 d-flex justify-content-center" : "pb-4 d-flex justify-content-start"}>
         <IoHomeSharp size={"30px"} />
         {
-          navBarColapsed ? "" : <span className="fw-bold ps-4 fs-4 ">SMS</span>
+          navBarColapsed ? "" : <span className="fw-bold ps-2 fs-4 ">MySociety</span>
         }
       </div>
       <div className="text-center fw-bold" >
@@ -104,13 +109,13 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
         <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/visitors")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><IoIosPeople /></div>
-          <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Visitor/Vehicle</span>
+          <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Manage Visitors </span>  {/**<br />Vehicle */}
         </div>
         {/* Suggestions & Complaints */}
         <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/suggestions")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><FaNoteSticky /></div>
-          <span className={navBarColapsed ? " font_size_12px" : "ps-2"}> Complaints</span>
+          <span className={navBarColapsed ? " font_size_12px" : "ps-2"}> Suggestions</span>
         </div>
         {/* Security */}
         <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}

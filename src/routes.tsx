@@ -5,7 +5,7 @@ import SignUpPage from "./pages/SignUpPage";
 // import Dashboard from "./components/Dashboard";
 // import DashboardPage from "./pages/DashboardPage";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
-import SideNavBarForDashboard from "./components/SideNavBarForDashboard";
+// import SideNavBarForDashboard from "./components/SideNavBarForDashboard";
 import DashboardPage from "./pages/DashboardPage";
 // import DashboardPage from "./pages/DashboardPage";
 

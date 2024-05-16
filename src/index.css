@@ -73,6 +73,14 @@ button:focus-visible {
   }
 }
 
-.link_text_color{
-color: #4544df;
+.link_text_color {
+  color: #4544df;
+}
+
+.breadcrumb-item {
+  color: rgb(129, 127, 127);
+}
+
+.breadcrumb-item.active {
+  color: #f05a76 !important;
 }

@@ -11,12 +11,13 @@ const RegisterRequestDropdown: FC<RegisterRequestDropdownProps> = ({ registerReq
     console.log("registerRequestsData", registerRequestsData);
 
     return (
-        <Dropdown>
+        <Dropdown className="">
             <Dropdown.Toggle id="dropdown-basic">
                 <div
                     style={{
                         backgroundColor: "#fff",
                     }}
+                    id='reg_req_btn'
                 >
                     <GradientHamburgerMenu onClick={() => { }}>
                         Register Requests

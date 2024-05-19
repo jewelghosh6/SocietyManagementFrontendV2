@@ -20,6 +20,7 @@ import NavBarForHome from "./components/NavBarForHome";
 import ManageUsersComp from "./components/ManageUsersComp";
 import RegisterRequestComp from "./components/RegisterRequestComp";
 import ManageUsersInnerLayout from "./components/ManageUsersInnerLayout";
+import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoardComp />} />
 
           <Route path="/manage-users" element={<ManageUsersInnerLayout />} >
+            <Route path="/manage-users/register-request/:id" element={<ApproveRegisterReqComp/>} />
             <Route path="/manage-users/register-request" element={<RegisterRequestComp />} />
             <Route path="/manage-users" element={<ManageUsersComp />} />
           </Route>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const GradientHamburgerMenu = styled.div`
+  className="grad_menu"
   width: fit-content; /* Adjust width as needed */
   height: fit-content; /* Adjust height as needed */
   display: flex;

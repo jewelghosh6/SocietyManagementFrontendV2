@@ -161,10 +161,57 @@ tfoot th {
 .fs-13 {
   font-size: 13px;
 }
+.fs_15 {
+  font-size: 15px;
+}
+.fs_10 {
+  font-size: 10px;
+}
 
 .line_height_18 {
   line-height: 18px;
 }
 .user_name_nav_wrapper {
   border-left: 1px solid grey;
+}
+
+.custom_input {
+  background-color: aliceblue;
+}
+.lf-player-container {
+  position: relative;
+}
+div#lottie {
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+
+body::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(210, 209, 206); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(104, 104, 129); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  /* border: 3px solid rgb(150, 144, 132); creates padding around scroll thumb */
+}
+
+#reg_req_btn > .grad_menu {
+  width: 100% !important;
+}
+
+.form-check-input:disabled ~ .form-check-label,
+.form-check-input[disabled] ~ .form-check-label,
+.form-check-input:disabled {
+  opacity: 1 !important;
+}
+
+.permission_checkbox > .form-check-input:checked {
+  background-color: green;
+  border-color: green;
 }

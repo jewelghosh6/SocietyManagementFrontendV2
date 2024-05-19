@@ -91,6 +91,16 @@ const SignUpPage = () => {
                     />
                     <label htmlFor="floatingInput">Email address</label>
                   </div>
+                  <div className="form-floating mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="floatingInput"
+                      placeholder="name@example.com"
+                      {...register("mobile", { required: true })}
+                    />
+                    <label htmlFor="floatingInput">Mobile</label>
+                  </div>
                   <div className="form-floating mb-4">
                     <input
                       type="password"

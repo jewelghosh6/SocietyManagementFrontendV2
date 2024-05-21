@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { AgGridReact } from "ag-grid-react"; // React Grid Logic
-import "ag-grid-community/styles/ag-grid.css"; // Core CSS
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+
 
 import { ColDef } from "ag-grid-community";
 import axios from "axios";
@@ -14,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Player } from '@lottiefiles/react-lottie-player';
 import animation from "../Lottie/refresh-btn-lottie.json"
+import RoleBadge from "./RoleBadge";
 
 
 // Row Data Interface
@@ -75,32 +75,36 @@ const GridExample = () => {
 
     // Column Definitions: Defines & controls grid columns.
     const [colDefs] = useState<ColDef<IRow>[]>([
-        { headerName: 'Id', field: "id", minWidth: 50 },
-        { headerName: 'First Name', field: "first_name", minWidth: 70 },
-        { headerName: 'Last Name', field: "last_name", minWidth: 70 },
+        { headerName: 'Id', field: "id", maxWidth: 50 },
+        {
+            headerName: 'Name',
+            valueGetter: (params: any) => {
+                return `${params.data.first_name} ${params.data.last_name}`;
+            },
+            width: 180
+        },
         { headerName: 'Email Id', field: "email_id", minWidth: 100 },
         { headerName: 'Mobile Number', field: "mobile_number", minWidth: 100 },
         {
-            headerName: 'Is Active', field: "is_active", editable: true, minWidth: 50 // Make the column editable if needed
+            headerName: 'Is Active', field: "is_active", editable: true, maxWidth: 80 // Make the column editable if needed
         },
-        // {
-        //     headerName: 'Roles', field: "roles",
-        //     // valueFormatter: (rolesArr:[]) => {
-        //     //     return rolesArr.map((item: any) => item.role_name).toString()
-        //     // }
-        //     // cellRendererFramework: MultiSelectCellRenderer, // Use custom cell renderer
-        //     editable: true,// Make the column editable if needed
-        //     // cellEditor: 'agRichSelectCellEditor',
-        //     // cellEditorParams: {
-        //     //     values: ['United States', 'Canada', 'Mexico'],
-        //     // },
-        // },
+        {
+            headerName: 'Roles', field: "roles",
+            cellRenderer: RoleBadge, // Use custom cell renderer for edit button
+            minWidth: 150, // Adjust the width of the column as needed
+            suppressMenu: true, // Hide column menu
+            cellRendererParams: {
+                onClick: (row: any) => console.log("row", row)
+                // Callback function to handle edit button click
+                // data:
+            },
+        },
         // { headerName: 'Permissions', field: "permissions" },
         {
             headerName: 'Edit',
             // field: 'editButton', // Field to hold the edit button data
             cellRenderer: EditButtonRenderer, // Use custom cell renderer for edit button
-            minWidth: 50, // Adjust the width of the column as needed
+            maxWidth: 60, // Adjust the width of the column as needed
             suppressMenu: true, // Hide column menu
             cellRendererParams: {
                 onClick: (row: any) => handleEditClick(row), // Callback function to handle edit button click
@@ -109,7 +113,7 @@ const GridExample = () => {
         {
             headerName: 'Delete',
             cellRenderer: DeleteButtonRenderer, // Use custom cell renderer for edit button
-            minWidth: 50, // Adjust the width of the column as needed
+            maxWidth: 70, // Adjust the width of the column as needed
             suppressMenu: true, // Hide column menu
             // cellRendererParams: {
             //     onClick: (row: any) => console.log("edit button clicked")

@@ -16,6 +16,9 @@ const SignUpPage = () => {
   const submitFormData = async (data: any) => {
     try {
       let resp = await axios.post(`${config.API_URL}/user/register`, data);
+      if (resp.data.success) navigate('/acc_under_review')
+      console.log("resp", resp);
+
       return resp;
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -32,7 +35,6 @@ const SignUpPage = () => {
   };
   return (
     <>
-      <script src="./assets/scripts/main.js" />
       <div className="container-fluid position-relative d-flex p-0">
         {/* <!-- Spinner Start --> */}
         {/* <div

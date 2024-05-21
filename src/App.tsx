@@ -21,6 +21,7 @@ import ManageUsersComp from "./components/ManageUsersComp";
 import RegisterRequestComp from "./components/RegisterRequestComp";
 import ManageUsersInnerLayout from "./components/ManageUsersInnerLayout";
 import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
+import RegistrationStatus from "./pages/RegisterRequestUnderProcessPage";
 
 function App() {
   return (
@@ -36,11 +37,14 @@ function App() {
           <Route path="/auth/forget-password" element={<ForgetPasswordPage />} />
         </Route>
 
+        <Route path="/acc_under_review" element={<RegistrationStatus />} />
+
+
         <Route path="/" element={<LayoutMain />} >
           <Route path="/dashboard" element={<DashBoardComp />} />
 
           <Route path="/manage-users" element={<ManageUsersInnerLayout />} >
-            <Route path="/manage-users/register-request/:id" element={<ApproveRegisterReqComp/>} />
+            <Route path="/manage-users/register-request/:id" element={<ApproveRegisterReqComp />} />
             <Route path="/manage-users/register-request" element={<RegisterRequestComp />} />
             <Route path="/manage-users" element={<ManageUsersComp />} />
           </Route>

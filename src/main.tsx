@@ -17,17 +17,17 @@ import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Toaster } from "react-hot-toast";
 import App from "./App.tsx";
-import { PrimeReactProvider } from "primereact/api";
+// import { PrimeReactProvider } from "primereact/api";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PrimeReactProvider>
+    {/* <PrimeReactProvider> */}
 
-      <Toaster
-        position="top-right"
-        reverseOrder={false} />
-      <App />
-    </PrimeReactProvider>
+    <Toaster
+      position="top-right"
+      reverseOrder={false} />
+    <App />
+    {/* </PrimeReactProvider> */}
 
   </React.StrictMode>
 );

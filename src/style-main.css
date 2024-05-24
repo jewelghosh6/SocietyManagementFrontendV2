@@ -215,3 +215,7 @@ body::-webkit-scrollbar-thumb {
   background-color: green;
   border-color: green;
 }
+
+.fade.shadow-lg.rounded-lg.border-light.text-center.alert.alert-warning.show {
+  background-color: aliceblue;
+}

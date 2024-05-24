@@ -3,7 +3,6 @@ import { AgGridReact } from "ag-grid-react"; // React Grid Logic
 
 
 import { ColDef } from "ag-grid-community";
-import axios from "axios";
 import config from "../environments/config";
 import EditButtonRenderer from "./EditButtonRenderer";
 import DeleteButtonRenderer from "./DeleteButtonRenderer";
@@ -14,6 +13,7 @@ import toast from "react-hot-toast";
 import { Player } from '@lottiefiles/react-lottie-player';
 import animation from "../Lottie/refresh-btn-lottie.json"
 import RoleBadge from "./RoleBadge";
+import useAxiosInterceptors from "../hooks/useAxiosInterceptors";
 
 
 // Row Data Interface
@@ -46,9 +46,11 @@ const GridExample = () => {
     const [searchText, setSearchText] = useState('');
     const [refreshAt, setRefreshAt] = useState(new Date())
 
+    const axiosInstance = useAxiosInterceptors();
+
     const playerRef = useRef<Player | null>(null); // Explicitly type the ref as Player or null
 
-    const handleClick = () => {
+    const handleLottieIconClick = () => {
         if (playerRef.current) {
             playerRef.current.play();
         }
@@ -62,7 +64,7 @@ const GridExample = () => {
         fetchUserData()
         // refreshUserData();
         //For getting No of Register request
-        axios.get(`${config.API_URL}/user/register-request`).then((res: any) => {
+        axiosInstance.get(`${config.API_URL}/user/register-request`).then((res: any) => {
             console.log("/register-request", res.data);
             setRegisterRequestsData(res.data.data)
 
@@ -141,7 +143,7 @@ const GridExample = () => {
 
     const fetchUserData = async () => {
         try {
-            let userData = await axios.get(`${config.API_URL}/user/view-all`);
+            let userData = await axiosInstance.get(`${config.API_URL}/user/view-all`);
             setUserData(userData.data.data)
             return userData;
         } catch (error) {
@@ -154,7 +156,8 @@ const GridExample = () => {
         // }).catch(err => )
     }
     const refreshUserData = () => {
-        handleClick()
+        handleLottieIconClick()
+        fetchUserData();
         toast.promise(fetchUserData(), {
             loading: "Loading...",
             success: (response) => {

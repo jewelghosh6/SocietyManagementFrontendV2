@@ -11,6 +11,15 @@ const SignInPage = () => {
   const submitFormData = async (data: any) => {
     try {
       let resp = await axios.post(`${config.API_URL}/auth/sign-in`, data);
+      console.log("resp", resp);
+
+      if (resp.data.success) {
+        localStorage.setItem("accessToken", resp.data.accessToken)
+        localStorage.setItem("refreshToken", resp.data.refreshToken);
+        localStorage.setItem("userData", JSON.stringify(resp.data.userData));
+
+        navigate('/dashboard');
+      }
       return resp;
     } catch (error) {
       console.error('Error fetching data:', error);

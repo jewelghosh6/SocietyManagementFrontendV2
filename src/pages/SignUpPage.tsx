@@ -16,7 +16,7 @@ const SignUpPage = () => {
   const submitFormData = async (data: any) => {
     try {
       let resp = await axios.post(`${config.API_URL}/user/register`, data);
-      if (resp.data.success) navigate('/acc_under_review')
+      if (resp.data.success) navigate('/account-under-review')
       console.log("resp", resp);
 
       return resp;

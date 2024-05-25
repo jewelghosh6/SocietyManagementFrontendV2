@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import config from "../environments/config";
+import toast from "react-hot-toast";
 
 
 interface FormState {
@@ -12,6 +13,7 @@ const ApproveRegisterReqComp = () => {
     const [userDetails, setUserDetails] = useState<any>({})
     const [roleList, setRoleList] = useState([]);
     const [permissionList, setPermissionList] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchUserReqDetails();
@@ -102,7 +104,7 @@ const ApproveRegisterReqComp = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (event: any) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
         // Get selected roles based on the form state
         const selectedRoles = roleList.filter((item: any, index: number) => formState[`role-${item.id}`]);
@@ -110,6 +112,27 @@ const ApproveRegisterReqComp = () => {
 
         const selectedPermissions = permissionList.filter((item: any, index: number) => formState[`permission-${item.id}`]);
         console.log('Selected permission:', selectedPermissions);
+
+        if (!selectedRoles.length || !selectedPermissions.length) {
+            toast.error("Please select any role for the user to approve user's register request")
+            return;
+        }
+
+        try {
+            let resp = await axios.post(`${config.API_URL}/user/register-request/approve`, {
+                userId: id, roles: selectedRoles, permissions: selectedPermissions
+            })
+            console.log("/user/register-request/approve", resp.data);
+            if (resp.data.success) {
+                toast.success("User request approved");
+                navigate("/manage-users/register-request")
+            }
+
+        } catch (error) {
+            console.log(error);
+
+        }
+
     };
 
 
@@ -153,7 +176,10 @@ const ApproveRegisterReqComp = () => {
                             </div>
                             <div className="permissions_section  px-1 w-100">
                                 <h5 className="">Permissions</h5>
-                                <div className="card p-3">
+                                <div className="card p-3" style={{
+                                    maxHeight: "242px",
+                                    overflowY: "scroll"
+                                }}>
                                     {permissionList.map((item: any, index) => (
                                         <div className="form-check permission_checkbox" key={index}>
                                             <input

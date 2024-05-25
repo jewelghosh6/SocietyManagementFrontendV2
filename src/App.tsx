@@ -21,10 +21,15 @@ import ManageUsersComp from "./components/ManageUsersComp";
 import RegisterRequestComp from "./components/RegisterRequestComp";
 import ManageUsersInnerLayout from "./components/ManageUsersInnerLayout";
 import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
+import RegistrationStatus from "./pages/RegisterRequestUnderProcessPage";
+import PrivateRoutes from "./shared/ProtectedRoutes";
+import AxiosInterceptorSetup from "./shared/AxiosInterceptorSetup";
 
 function App() {
   return (
     <BrowserRouter>
+
+      <AxiosInterceptorSetup />
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
 
@@ -36,25 +41,29 @@ function App() {
           <Route path="/auth/forget-password" element={<ForgetPasswordPage />} />
         </Route>
 
-        <Route path="/" element={<LayoutMain />} >
-          <Route path="/dashboard" element={<DashBoardComp />} />
+        <Route path="/account-under-review" element={<RegistrationStatus />} />
 
-          <Route path="/manage-users" element={<ManageUsersInnerLayout />} >
-            <Route path="/manage-users/register-request/:id" element={<ApproveRegisterReqComp/>} />
-            <Route path="/manage-users/register-request" element={<RegisterRequestComp />} />
-            <Route path="/manage-users" element={<ManageUsersComp />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/" element={<LayoutMain />} >
+            <Route path="/dashboard" element={<DashBoardComp />} />
+
+            <Route path="/manage-users" element={<ManageUsersInnerLayout />} >
+              <Route path="/manage-users/register-request/:id" element={<ApproveRegisterReqComp />} />
+              <Route path="/manage-users/register-request" element={<RegisterRequestComp />} />
+              <Route path="/manage-users" element={<ManageUsersComp />} />
+            </Route>
+
+            <Route path="/flats" element={<FlatsComp />} />
+            <Route path="/flat-allotment" element={<FaltAllotmentComp />} />
+            <Route path="/visitors" element={<VisitorComp />} />
+            <Route path="/vehicle" element={<VehicleComp />} />
+            <Route path="/suggestions" element={<SuggestionComplaintsComp />} />
+            <Route path="/group-chat" element={<GroupChatComp />} />
+            <Route path="/events" element={<EventsComp />} />
+            <Route path="/bills" element={<BillsComp />} />
+            <Route path="/security" element={<SecurityComp />} />
+            <Route path="/vehicle" element={<VehicleComp />} />
           </Route>
-
-          <Route path="/flats" element={<FlatsComp />} />
-          <Route path="/flat-allotment" element={<FaltAllotmentComp />} />
-          <Route path="/visitors" element={<VisitorComp />} />
-          <Route path="/vehicle" element={<VehicleComp />} />
-          <Route path="/suggestions" element={<SuggestionComplaintsComp />} />
-          <Route path="/group-chat" element={<GroupChatComp />} />
-          <Route path="/events" element={<EventsComp />} />
-          <Route path="/bills" element={<BillsComp />} />
-          <Route path="/security" element={<SecurityComp />} />
-          <Route path="/vehicle" element={<VehicleComp />} />
         </Route>
       </Routes>
     </BrowserRouter >

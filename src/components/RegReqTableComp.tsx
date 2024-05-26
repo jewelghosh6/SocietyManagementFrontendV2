@@ -2,8 +2,8 @@ import React, { useLayoutEffect, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from 'ag-grid-community';
 import ApproveRegReqButtonRenderer from './ApproveRegReqButtonRenderer';
-import axios from 'axios';
 import config from '../environments/config';
+import useAxiosInterceptors from '../hooks/useAxiosInterceptors';
 
 interface RowData {
     status: string;
@@ -16,10 +16,12 @@ interface RowData {
 
 const TableComponent: React.FC = () => {
     const [rowData, setRowData] = useState<RowData[]>([]);
+    const axiosInstance = useAxiosInterceptors();
+
 
     useLayoutEffect(() => {
 
-        axios.get(`${config.API_URL}/user/register-request`).then((res: any) => {
+        axiosInstance.get(`${config.API_URL}/user/register-request`).then((res: any) => {
             console.log("/register-request", res.data);
             setRowData(res.data.data)
 

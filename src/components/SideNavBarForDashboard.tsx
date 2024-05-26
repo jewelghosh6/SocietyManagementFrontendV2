@@ -1,12 +1,8 @@
-import { Dispatch, FC, SetStateAction } from "react"
-import { BsCalendarEventFill } from "react-icons/bs"
-import { FaNoteSticky, FaUserSecret } from "react-icons/fa6"
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle, IoIosPeople } from "react-icons/io"
+import { Dispatch, FC, SetStateAction, useContext } from "react"
+import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
 import { IoHomeSharp } from "react-icons/io5"
-import { MdBallot, MdManageAccounts, MdMeetingRoom } from "react-icons/md"
-import { PiChatsFill } from "react-icons/pi"
-import { RiBillFill, RiDashboard3Fill } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
+import { UserSpecificMenuContext } from "./LayoutMain"
 
 
 interface SideNavBarForDashboardProps {
@@ -14,6 +10,9 @@ interface SideNavBarForDashboardProps {
   navBarColapsed: boolean;
 }
 const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarCollapsed, navBarColapsed }) => {
+
+  const UserSpecificMenus = useContext(UserSpecificMenuContext);
+
   const navigate = useNavigate();
 
   const sidenavTogglehandler = () => {
@@ -21,8 +20,7 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
   }
 
   return (
-    < div className={`sidebar bg_gradient sidenav_animation  ${navBarColapsed ? " px-2 pt-2 pb-3" : "  px-3 pb-5"}`
-    }
+    < div className={`sidebar z-2 bg_gradient sidenav_animation d-none d-md-block    ${navBarColapsed ? " px-2 pt-2 pb-3" : "  px-3 pb-5"}`}
       style={{
         maxWidth: navBarColapsed ? "81px" : "199px",
         height: "100%",
@@ -63,8 +61,25 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>My Profile</span>
         </div> */}
 
+        {
+          UserSpecificMenus.map((item: any, index: number) => {
+            return (
+              <div key={index} className={navBarColapsed ?
+                "cursor_pointer nav_items py-6px d-flex flex-column " :
+                "cursor_pointer nav_items py-14px d-flex "}
+                onClick={() => {
+                  navigate(item.url)
+                }}>
+                <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}>{item.icon}</div>
+                <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>{item.title}</span>
+              </div>
+
+            )
+          })
+        }
+
         {/* Dashboard */}
-        <div className={navBarColapsed ?
+        {/* <div className={navBarColapsed ?
           "cursor_pointer nav_items py-6px d-flex flex-column " :
           "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => {
@@ -72,10 +87,10 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
           }}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><RiDashboard3Fill /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Dashboard</span>
-        </div>
+        </div> */}
 
         {/* Manage Users */}
-        <div className={navBarColapsed ?
+        {/* <div className={navBarColapsed ?
           "cursor_pointer nav_items py-6px d-flex flex-column " :
           "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => {
@@ -83,60 +98,60 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
           }}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><MdManageAccounts /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Manage Users</span>
-        </div>
+        </div> */}
 
         {/* Flats */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => {
             navigate("/flats")
           }}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><MdMeetingRoom /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Flats</span>
-        </div>
+        </div> */}
         {/* Flat Allotment */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/flat-allotment")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><MdBallot /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Flat Allotment</span>
-        </div>
+        </div> */}
         {/* Bills */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/bills")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><RiBillFill /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Bills</span>
-        </div>
+        </div> */}
         {/* Visitor & Vehicle */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/visitors")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><IoIosPeople /></div>
-          <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Manage Visitors </span>  {/**<br />Vehicle */}
-        </div>
+          <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Manage Visitors </span>  
+        </div> */}
         {/* Suggestions & Complaints */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/suggestions")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><FaNoteSticky /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}> Suggestions</span>
-        </div>
+        </div> */}
         {/* Security */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/security")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><FaUserSecret /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Security</span>
-        </div>
+        </div> */}
         {/* Events */}
-        <div className={navBarColapsed ?
+        {/* <div className={navBarColapsed ?
           "cursor_pointer nav_items py-6px d-flex flex-column " :
           "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/events")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><BsCalendarEventFill /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Events</span>
-        </div>
+        </div> */}
         {/* Society Group Chat */}
-        <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
+        {/* <div className={navBarColapsed ? "cursor_pointer nav_items py-6px d-flex flex-column " : "cursor_pointer nav_items py-14px d-flex "}
           onClick={() => navigate("/group-chat")}>
           <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}><PiChatsFill /></div>
           <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>Group Chat</span>
-        </div>
+        </div> */}
 
 
       </div>

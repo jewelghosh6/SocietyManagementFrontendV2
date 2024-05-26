@@ -151,9 +151,9 @@ tfoot th {
 }
 
 .name_initial_wrapper {
-  padding: 11px;
+  padding: 10px;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 23px;
 }
 .fs-16 {
   font-size: 16px;
@@ -218,4 +218,8 @@ body::-webkit-scrollbar-thumb {
 
 .fade.shadow-lg.rounded-lg.border-light.text-center.alert.alert-warning.show {
   background-color: aliceblue;
+}
+
+.sc-beySPh.iDskdp {
+  padding: 8px !important;
 }

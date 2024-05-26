@@ -1,0 +1,8 @@
+.offcanvas.offcanvas-start {
+  width: 200px;
+  background-image: linear-gradient(
+    to right,
+    var(--grad_color1),
+    var(--grad_color2)
+  );
+}

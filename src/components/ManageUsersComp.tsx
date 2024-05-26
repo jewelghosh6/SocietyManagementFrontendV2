@@ -157,7 +157,6 @@ const GridExample = () => {
     }
     const refreshUserData = () => {
         handleLottieIconClick()
-        fetchUserData();
         toast.promise(fetchUserData(), {
             loading: "Loading...",
             success: (response) => {

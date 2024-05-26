@@ -17,6 +17,7 @@ const SignInPage = () => {
         localStorage.setItem("accessToken", resp.data.accessToken)
         localStorage.setItem("refreshToken", resp.data.refreshToken);
         localStorage.setItem("userData", JSON.stringify(resp.data.userData));
+        localStorage.setItem("accessTokenExpireAt", resp.data.accessTokenExpireAt)
 
         navigate('/dashboard');
       }

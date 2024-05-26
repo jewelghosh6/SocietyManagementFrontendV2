@@ -1,6 +1,3 @@
-// import { useState } from 'react'
-import "./App.css";
-import "./css/home-page.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LayoutMain from "./components/LayoutMain";
 import DashBoardComp from "./components/DashBoardComp";
@@ -24,6 +21,8 @@ import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
 import RegistrationStatus from "./pages/RegisterRequestUnderProcessPage";
 import PrivateRoutes from "./shared/ProtectedRoutes";
 import AxiosInterceptorSetup from "./shared/AxiosInterceptorSetup";
+import MyFlatDetailComp from "./components/MyFlatDetailComp";
+import MyBillsComp from "./components/MyBillsComp";
 
 function App() {
   return (
@@ -53,14 +52,17 @@ function App() {
               <Route path="/manage-users" element={<ManageUsersComp />} />
             </Route>
 
-            <Route path="/flats" element={<FlatsComp />} />
+            <Route path="/all-flats" element={<FlatsComp />} />
+            <Route path="/my-flat" element={<MyFlatDetailComp />} />
+
             <Route path="/flat-allotment" element={<FaltAllotmentComp />} />
             <Route path="/visitors" element={<VisitorComp />} />
             <Route path="/vehicle" element={<VehicleComp />} />
             <Route path="/suggestions" element={<SuggestionComplaintsComp />} />
             <Route path="/group-chat" element={<GroupChatComp />} />
             <Route path="/events" element={<EventsComp />} />
-            <Route path="/bills" element={<BillsComp />} />
+            <Route path="/manage-bills" element={<BillsComp />} />
+            <Route path="/my-bills" element={<MyBillsComp />} />
             <Route path="/security" element={<SecurityComp />} />
             <Route path="/vehicle" element={<VehicleComp />} />
           </Route>

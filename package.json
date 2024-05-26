@@ -10,12 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.4.1",
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
-    "@tanstack/react-table": "^8.16.0",
     "ag-grid-community": "^31.3.1",
     "ag-grid-react": "^31.3.1",
     "axios": "^1.6.8",

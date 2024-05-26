@@ -57,10 +57,10 @@ const ApproveRegisterReqComp = () => {
     // Initialize the state with the roleList, setting each role as unchecked initially
     const [formState, setFormState] = useState<FormState>(
         {
-            ...roleList.reduce((acc: any, item: any, index: number) => {
+            ...roleList.reduce((acc: any, item: any) => {
                 acc[`role-${item.id}`] = false;
                 return acc;
-            }, {}), ...permissionList.reduce((acc: any, item: any, index) => {
+            }, {}), ...permissionList.reduce((acc: any, item: any) => {
                 acc[`permission-${item.id}`] = false;
                 return acc;
             }, {})
@@ -82,13 +82,13 @@ const ApproveRegisterReqComp = () => {
             // console.log("permpList", permpList);
 
 
-            setFormState((prevState: any) => ({
-                ...roleList.reduce((acc: any, item: any, index: number) => {
+            setFormState(() => ({
+                ...roleList.reduce((acc: any, item: any) => {
                     acc[`role-${item.id}`] = false;
                     return acc;
                 }, {}),
                 [id]: checked,
-                ...permissionList.reduce((acc: any, item: any, index) => {
+                ...permissionList.reduce((acc: any, item: any) => {
                     if (permpList.includes(item.id)) {
                         acc[`permission-${item.id}`] = true;
                     }
@@ -109,10 +109,10 @@ const ApproveRegisterReqComp = () => {
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         // Get selected roles based on the form state
-        const selectedRoles = roleList.filter((item: any, index: number) => formState[`role-${item.id}`]);
+        const selectedRoles = roleList.filter((item: any) => formState[`role-${item.id}`]);
         console.log('Selected roles:', selectedRoles);
 
-        const selectedPermissions = permissionList.filter((item: any, index: number) => formState[`permission-${item.id}`]);
+        const selectedPermissions = permissionList.filter((item: any) => formState[`permission-${item.id}`]);
         console.log('Selected permission:', selectedPermissions);
 
         if (!selectedRoles.length || !selectedPermissions.length) {

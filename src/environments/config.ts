@@ -1,5 +1,5 @@
 const config = {
-  API_URL: "http://192.168.23.206:3001/api",
+  API_URL: "https://society-management-backend-v2.onrender.com/api",
 };
 
 export default config;

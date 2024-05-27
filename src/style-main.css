@@ -167,13 +167,22 @@ tfoot th {
 .fs_10 {
   font-size: 10px;
 }
+.fs-14 {
+  font-size: 14px;
+}
+.fs-20 {
+  font-size: 20px;
+}
+.fs-18 {
+  font-size: 18px;
+}
 
 .line_height_18 {
   line-height: 18px;
 }
-.user_name_nav_wrapper {
+/* .user_name_nav_wrapper {
   border-left: 1px solid grey;
-}
+} */
 
 .custom_input {
   background-color: aliceblue;
@@ -222,4 +231,21 @@ body::-webkit-scrollbar-thumb {
 
 .sc-beySPh.iDskdp {
   padding: 8px !important;
+}
+
+.topnav_options .dropdown > .btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  max-height: 40px;
+}
+.topnav_options .dropdown > .btn:active {
+  background-color: transparent;
+}
+
+.topnav_options .dropdown > .dropdown-menu.show {
+  /* transform: translate3d(-115.3333px, 55px, 0px) !important; */
+  /* inset: 6px auto auto -25px !important; */
+  min-width: 220px !important;
+  border-radius: 14px !important;
 }

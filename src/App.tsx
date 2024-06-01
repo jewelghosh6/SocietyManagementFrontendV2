@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import LayoutMain from "./components/LayoutMain";
+import LayoutMain from "./Layouts/LayoutMain";
 import DashBoardComp from "./components/DashBoardComp";
 import FlatsComp from "./components/FlatsComp";
 import VisitorComp from "./components/VisitorComp";
@@ -16,19 +16,19 @@ import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import NavBarForHome from "./components/NavBarForHome";
 import ManageUsersComp from "./components/ManageUsersComp";
 import RegisterRequestComp from "./components/RegisterRequestComp";
-import ManageUsersInnerLayout from "./components/ManageUsersInnerLayout";
+import ManageUsersInnerLayout from "./Layouts/ManageUsersInnerLayout";
 import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
 import RegistrationStatus from "./pages/RegisterRequestUnderProcessPage";
 import PrivateRoutes from "./shared/ProtectedRoutes";
-import AxiosInterceptorSetup from "./shared/AxiosInterceptorSetup";
 import MyFlatDetailComp from "./components/MyFlatDetailComp";
 import MyBillsComp from "./components/MyBillsComp";
+import FlatDetailsInnerLayout from "./Layouts/FlatDetailsInnerLayout";
 
 function App() {
+
   return (
     <BrowserRouter>
 
-      <AxiosInterceptorSetup />
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
 
@@ -52,7 +52,9 @@ function App() {
               <Route path="/manage-users" element={<ManageUsersComp />} />
             </Route>
 
-            <Route path="/all-flats" element={<FlatsComp />} />
+            <Route path="/flat-details" element={<FlatDetailsInnerLayout />}  >
+              <Route path="/flat-details" element={<FlatsComp />} />
+            </Route>
             <Route path="/my-flat" element={<MyFlatDetailComp />} />
 
             <Route path="/flat-allotment" element={<FaltAllotmentComp />} />

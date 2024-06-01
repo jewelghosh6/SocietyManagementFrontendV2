@@ -1,5 +1,5 @@
 const config = {
-  API_URL: "https://society-management-backend-v2.onrender.com/api",
+  API_URL: "https://tfk9pkp6-3000.inc1.devtunnels.ms/api",
 };
 
 export default config;

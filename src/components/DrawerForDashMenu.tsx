@@ -4,7 +4,7 @@ import { GradientHamburgerMenu } from './GradientHamburgerMenu';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 
-import { UserSpecificMenuContext } from './LayoutMain';
+import { UserSpecificMenuContext } from '../Layouts/LayoutMain';
 
 const DrawerForDashboardMenu = () => {
     const UserSpecificMenus = useContext(UserSpecificMenuContext);

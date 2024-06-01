@@ -3,6 +3,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import config from "../environments/config";
+import { Image } from "react-bootstrap";
 // interface SignUpObject {
 //   firstName: string;
 //   lastName: string;
@@ -55,33 +56,40 @@ const SignUpPage = () => {
         <div className="container-fluid">
           <div
             className="row h-100 align-items-center justify-content-center"
-            style={{ minHeight: "100vh" }}
+            style={{ height: "90vh" }}
           >
+            <Image className="d-none d-md-block  col-md-6 col-lg-5 col-xl-4" src="/illustrations/signup.svg" height="100%" />
+
             <div className="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
               <div className="shadow rounded p-4 p-sm-5 my-4 mx-3">
                 <div className="text-center mb-3">
                   <h3>Sign Up</h3>
                 </div>
                 <form onSubmit={handleSubmit(formSubmitHandler)}>
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="floatingText"
-                      placeholder="jhondoe"
-                      {...register("firstName", { required: true })}
-                    />
-                    <label htmlFor="floatingText">First Name</label>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="floatingText"
-                      placeholder="jhondoe"
-                      {...register("lastName", { required: true })}
-                    />
-                    <label htmlFor="floatingText">Last Name</label>
+                  <div className="row"></div>
+                  <div className="row"></div>
+                  <div className="row"></div>
+                  <div className="row">
+                    <div className=" col-12 col-md-6 form-floating mb-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="floatingText"
+                        placeholder="jhondoe"
+                        {...register("firstName", { required: true })}
+                      />
+                      <label htmlFor="floatingText">First Name</label>
+                    </div>
+                    <div className="col-12 col-md-6  form-floating mb-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="floatingText"
+                        placeholder="jhondoe"
+                        {...register("lastName", { required: true })}
+                      />
+                      <label htmlFor="floatingText">Last Name</label>
+                    </div>
                   </div>
                   <div className="form-floating mb-3">
                     <input
@@ -140,6 +148,7 @@ const SignUpPage = () => {
                 </p>
               </div>
             </div>
+
           </div>
         </div>
         {/* <!-- Sign Up End --> */}

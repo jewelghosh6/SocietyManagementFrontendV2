@@ -7,14 +7,14 @@ import { Dropdown } from "react-bootstrap";
 import { FaSignOutAlt } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import useAxiosInterceptors from "../hooks/useAxiosInterceptors";
+import { axiosInstance } from "../utils/axiosInstance";
 import config from "../environments/config";
 import toast from "react-hot-toast";
 
 
 const TopNavBar = () => {
     const [refreshToken] = useState(localStorage.getItem("refreshToken"));
-    const axiosInstance = useAxiosInterceptors();
+    // const axiosInstance = useAxiosInterceptors();
     const [userData] = useState(JSON.parse(localStorage.getItem("userData") ?? ""))
     const navigate = useNavigate();
 
@@ -82,7 +82,7 @@ const TopNavBar = () => {
                             </div>
                             <div className="name_nav d-flex flex-column ms-2 line_height_18 d-none d-md-flex">
                                 <span className="fw-bolder fs-16 text-dark">{userData.first_name + " " + userData.last_name}</span>
-                                <span className="text-secondary fs-13">{userData.role}</span>
+                                <span className="text-secondary fs-13 text-start">{userData.role}</span>
                             </div>
                         </div>
                     </Dropdown.Toggle>

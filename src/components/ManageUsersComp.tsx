@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import { Player } from '@lottiefiles/react-lottie-player';
 import animation from "../Lottie/refresh-btn-lottie.json"
 import RoleBadge from "./RoleBadge";
-import useAxiosInterceptors from "../hooks/useAxiosInterceptors";
+import { axiosInstance } from "../utils/axiosInstance";
 
 
 // Row Data Interface
@@ -46,7 +46,7 @@ const GridExample = () => {
     const [searchText, setSearchText] = useState('');
     const [refreshAt, setRefreshAt] = useState(new Date())
 
-    const axiosInstance = useAxiosInterceptors();
+    // const axiosInstance = useAxiosInterceptors();
 
     const playerRef = useRef<Player | null>(null); // Explicitly type the ref as Player or null
 
@@ -77,23 +77,23 @@ const GridExample = () => {
 
     // Column Definitions: Defines & controls grid columns.
     const [colDefs] = useState<ColDef<IRow>[]>([
-        { headerName: 'Id', field: "id", maxWidth: 50 },
+        { headerName: 'Id', field: "id", minWidth: 50 },
         {
             headerName: 'Name',
             valueGetter: (params: any) => {
                 return `${params.data.first_name} ${params.data.last_name}`;
             },
-            width: 180
+            minWidth: 170
         },
-        { headerName: 'Email Id', field: "email_id", minWidth: 100 },
-        { headerName: 'Mobile Number', field: "mobile_number", minWidth: 100 },
+        { headerName: 'Email Id', field: "email_id", minWidth: 160 },
+        { headerName: 'Mobile Number', field: "mobile_number", minWidth: 140 },
         {
-            headerName: 'Is Active', field: "is_active", editable: true, maxWidth: 80 // Make the column editable if needed
+            headerName: 'Is Active', field: "is_active", editable: true, minWidth: 80 // Make the column editable if needed
         },
         {
             headerName: 'Roles', field: "roles",
             cellRenderer: RoleBadge, // Use custom cell renderer for edit button
-            minWidth: 150, // Adjust the width of the column as needed
+            minWidth: 165, // Adjust the width of the column as needed
             suppressMenu: true, // Hide column menu
             cellRendererParams: {
                 onClick: (row: any) => console.log("row", row)
@@ -106,7 +106,7 @@ const GridExample = () => {
             headerName: 'Edit',
             // field: 'editButton', // Field to hold the edit button data
             cellRenderer: EditButtonRenderer, // Use custom cell renderer for edit button
-            maxWidth: 60, // Adjust the width of the column as needed
+            minWidth: 75, // Adjust the width of the column as needed
             suppressMenu: true, // Hide column menu
             cellRendererParams: {
                 onClick: (row: any) => handleEditClick(row), // Callback function to handle edit button click
@@ -115,7 +115,7 @@ const GridExample = () => {
         {
             headerName: 'Delete',
             cellRenderer: DeleteButtonRenderer, // Use custom cell renderer for edit button
-            maxWidth: 70, // Adjust the width of the column as needed
+            minWidth: 75, // Adjust the width of the column as needed
             suppressMenu: true, // Hide column menu
             // cellRendererParams: {
             //     onClick: (row: any) => console.log("edit button clicked")

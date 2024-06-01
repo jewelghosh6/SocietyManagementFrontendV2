@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom'
-import SideNavBarForDashboard from './SideNavBarForDashboard'
-import TopNavBar from './TopNaavBar'
+import SideNavBarForDashboard from '../components/SideNavBarForDashboard'
+import TopNavBar from '../components/TopNaavBar'
 import { FC, createContext, useEffect, useState } from 'react';
 
 import { MdBallot, MdManageAccounts, MdMeetingRoom } from 'react-icons/md';
@@ -62,7 +62,7 @@ const LayoutMain: FC<LayoutMainProps> = () => {
         },
         {
             accessKey: "can_view_all_flat_details",
-            url: "/all-flats",
+            url: "/flat-details",
             icon: <MdMeetingRoom />,
             title: "Flat Details"
         },

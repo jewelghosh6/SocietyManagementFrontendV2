@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction, useContext } from "react"
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
 import { IoHomeSharp } from "react-icons/io5"
 import { useNavigate } from "react-router-dom"
-import { UserSpecificMenuContext } from "./LayoutMain"
+import { UserSpecificMenuContext } from "../Layouts/LayoutMain"
 
 
 interface SideNavBarForDashboardProps {
@@ -22,11 +22,13 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
   return (
     < div className={`sidebar z-2 bg_gradient sidenav_animation d-none d-md-block    ${navBarColapsed ? " px-2 pt-2 pb-3" : "  px-3 pb-5"}`}
       style={{
-        maxWidth: navBarColapsed ? "81px" : "199px",
+        maxWidth: navBarColapsed ? "81px" : "200px",
         height: "100%",
         position: "relative",
         top: "0px",
-        bottom: "0px"
+        bottom: "0px",
+        // overflowY: "scroll",
+        // overflowX: "hidden"
       }}>
       <div style={{ position: "relative", left: navBarColapsed ? "86%" : "100%", top: navBarColapsed ? "2px" : "10px" }}>
         <div className="cursor_pointer sidenav_animation">
@@ -64,9 +66,10 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
         {
           UserSpecificMenus.map((item: any, index: number) => {
             return (
-              <div key={index} className={navBarColapsed ?
-                "cursor_pointer nav_items py-6px d-flex flex-column " :
-                "cursor_pointer nav_items py-14px d-flex "}
+              <div key={index} className={`cursor_pointer nav_items d-flex hover_menu_item border_radious_10px
+               ${navBarColapsed ?
+                  " py-6px  flex-column" :
+                  " py-14px"}`}
                 onClick={() => {
                   navigate(item.url)
                 }}>

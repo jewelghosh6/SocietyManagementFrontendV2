@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import config from "../environments/config";
 import toast from "react-hot-toast";
-import useAxiosInterceptors from "../hooks/useAxiosInterceptors";
+import { axiosInstance } from "../utils/axiosInstance";
 
 
 interface FormState {
     [key: string]: boolean;
 }
 const ApproveRegisterReqComp = () => {
-    const axiosInstance = useAxiosInterceptors();
+    // const axiosInstance = useAxiosInterceptors();
     const { id } = useParams();
     const [userDetails, setUserDetails] = useState<any>({})
     const [roleList, setRoleList] = useState([]);

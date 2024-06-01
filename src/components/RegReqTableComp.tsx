@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from 'ag-grid-community';
 import ApproveRegReqButtonRenderer from './ApproveRegReqButtonRenderer';
 import config from '../environments/config';
-import useAxiosInterceptors from '../hooks/useAxiosInterceptors';
+import { axiosInstance } from '../utils/axiosInstance';
 
 interface RowData {
     status: string;
@@ -16,7 +16,6 @@ interface RowData {
 
 const TableComponent: React.FC = () => {
     const [rowData, setRowData] = useState<RowData[]>([]);
-    const axiosInstance = useAxiosInterceptors();
 
 
     useLayoutEffect(() => {

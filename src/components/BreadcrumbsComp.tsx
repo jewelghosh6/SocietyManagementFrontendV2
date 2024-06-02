@@ -12,11 +12,13 @@ interface BreadcrumbsProps {
 
 const BreadcrumbsComp: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => (
     <Breadcrumb>
-        {breadcrumbs.map((breadcrumb, index) => (
-            <Breadcrumb.Item key={index} >
-                {breadcrumb.url == "#" ? breadcrumb.title : <Link to={breadcrumb.url}>{breadcrumb.title}</Link>}
-            </Breadcrumb.Item>
-        ))}
+        {breadcrumbs.map((breadcrumb, index) => {
+            let isLast = index === breadcrumbs.length - 1;
+            return (
+                <Breadcrumb.Item key={index} active={isLast} >
+                    {isLast ? breadcrumb.title : <Link to={breadcrumb.url}>{breadcrumb.title}</Link>}
+                </Breadcrumb.Item>)
+        })}
     </Breadcrumb>
 );
 

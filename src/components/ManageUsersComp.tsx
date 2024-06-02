@@ -223,6 +223,9 @@ const GridExample = () => {
                         columnDefs={colDefs}
                         defaultColDef={defaultColDef}
                         quickFilterText={searchText} // Apply search filter
+                        pagination={true}
+                        paginationPageSize={10}
+
 
                     // onRowClicked={onRowClicked}
                     // onCellValueChanged={onCellValueChanged}

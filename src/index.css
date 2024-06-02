@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
   --cs-primary_bg_color: #4544df;
   --cs_primary_color: #fff;
+  /* --cs_secondary_text_color: #928e8e; */
   --grad_color1: #f05a76;
   --grad_color2: #f6a63d;
 }
@@ -86,5 +87,12 @@ button:focus-visible {
 }
 
 .breadcrumb-item.active {
-  color: #f05a76 !important;
+  color: rgba(var(--bs-secondary-rgb)) !important;
+}
+.breadcrumb-item a {
+  color: black !important;
+}
+.breadcrumb-item a:hover {
+  color: var(--cs-primary_bg_color) !important;
+  background-color: transparent !important;
 }

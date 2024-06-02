@@ -23,6 +23,7 @@ import PrivateRoutes from "./shared/ProtectedRoutes";
 import MyFlatDetailComp from "./components/MyFlatDetailComp";
 import MyBillsComp from "./components/MyBillsComp";
 import FlatDetailsInnerLayout from "./Layouts/FlatDetailsInnerLayout";
+import GroupChatInnerLayout from "./Layouts/GroupChatInnerLayout";
 
 function App() {
 
@@ -61,7 +62,11 @@ function App() {
             <Route path="/visitors" element={<VisitorComp />} />
             <Route path="/vehicle" element={<VehicleComp />} />
             <Route path="/suggestions" element={<SuggestionComplaintsComp />} />
-            <Route path="/group-chat" element={<GroupChatComp />} />
+
+            <Route path="/group-chat" element={< GroupChatInnerLayout />} >
+              <Route path="/group-chat" element={<GroupChatComp />} />
+            </Route>
+            
             <Route path="/events" element={<EventsComp />} />
             <Route path="/manage-bills" element={<BillsComp />} />
             <Route path="/my-bills" element={<MyBillsComp />} />

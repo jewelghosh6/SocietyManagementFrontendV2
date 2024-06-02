@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, useContext } from "react"
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
 import { IoHomeSharp } from "react-icons/io5"
-import { useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { UserSpecificMenuContext } from "../Layouts/LayoutMain"
 
 
@@ -13,14 +13,14 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
 
   const UserSpecificMenus = useContext(UserSpecificMenuContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const sidenavTogglehandler = () => {
     setNavBarCollapsed((prev: boolean) => !prev)
   }
 
   return (
-    < div className={`sidebar z-2 bg_gradient sidenav_animation d-none d-md-block    ${navBarColapsed ? " px-2 pt-2 pb-3" : "  px-3 pb-5"}`}
+    < div className={`sidebar z-2 bg_gradient sidenav_animation d-none d-md-block    ${navBarColapsed ? " px-2 pt-2 pb-3" : " px-3 pb-5"}`}
       style={{
         maxWidth: navBarColapsed ? "81px" : "200px",
         height: "100%",
@@ -66,16 +66,22 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
         {
           UserSpecificMenus.map((item: any, index: number) => {
             return (
-              <div key={index} className={`cursor_pointer nav_items d-flex hover_menu_item border_radious_10px
-               ${navBarColapsed ?
-                  " py-6px  flex-column" :
-                  " py-14px"}`}
-                onClick={() => {
-                  navigate(item.url)
-                }}>
+              <NavLink key={index}
+                className={({ isActive }) =>
+                  `margin_left_15 ps-3 cursor_pointer nav_items d-flex hover_menu_item border_radious_10px my-1
+                   ${navBarColapsed ? " py-6px  flex-column" : " py-14px"}
+                   ${isActive ? 'active-link' : ''}`
+                }
+                to={item.url}
+              // className={}
+
+              // onClick={() => {
+              //   navigate(item.url)
+              // }}
+              >
                 <div className={navBarColapsed ? "d-flex justify-content-center pb-1" : ""}>{item.icon}</div>
                 <span className={navBarColapsed ? " font_size_12px" : "ps-2"}>{item.title}</span>
-              </div>
+              </NavLink>
 
             )
           })

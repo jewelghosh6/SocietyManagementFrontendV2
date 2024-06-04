@@ -101,7 +101,7 @@ const TopNavBar = () => {
                             </div>
                         </Dropdown.Header>
                         <Dropdown.Divider />
-                        <div className="d-flex flex-column  py-2 fs-14">
+                        <div className="d-flex flex-column  py-2 fs-14 dropdown_dashboard_topnav">
                             <Link to={"#"} className="py-1 px-3"><MdAccountCircle className="me-2 " size={20} />My Profile</Link>
                             <Link to={"#"} className="py-1 px-3"><IoSettingsSharp className="me-2" size={20} />Account Settings</Link>
                             <span role="button" onClick={signOutButtonClickHandler} className="py-1 link_color px-3">

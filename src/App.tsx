@@ -24,6 +24,7 @@ import MyFlatDetailComp from "./components/MyFlatDetailComp";
 import MyBillsComp from "./components/MyBillsComp";
 import FlatDetailsInnerLayout from "./Layouts/FlatDetailsInnerLayout";
 import GroupChatInnerLayout from "./Layouts/GroupChatInnerLayout";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
 
@@ -39,6 +40,8 @@ function App() {
           <Route path="/auth/sign-in" element={<SignInPage />} />
           <Route path="/auth/sign-up" element={<SignUpPage />} />
           <Route path="/auth/forget-password" element={<ForgetPasswordPage />} />
+          <Route path="/auth/reset-password/:passwordResetToken" element={<ResetPasswordPage />} />
+
         </Route>
 
         <Route path="/account-under-review" element={<RegistrationStatus />} />
@@ -53,8 +56,8 @@ function App() {
               <Route path="/manage-users" element={<ManageUsersComp />} />
             </Route>
 
-            <Route path="/flat-details" element={<FlatDetailsInnerLayout />}  >
-              <Route path="/flat-details" element={<FlatsComp />} />
+            <Route path="/manage-flats" element={<FlatDetailsInnerLayout />}  >
+              <Route path="/manage-flats" element={<FlatsComp />} />
             </Route>
             <Route path="/my-flat" element={<MyFlatDetailComp />} />
 
@@ -66,7 +69,7 @@ function App() {
             <Route path="/group-chat" element={< GroupChatInnerLayout />} >
               <Route path="/group-chat" element={<GroupChatComp />} />
             </Route>
-            
+
             <Route path="/events" element={<EventsComp />} />
             <Route path="/manage-bills" element={<BillsComp />} />
             <Route path="/my-bills" element={<MyBillsComp />} />

@@ -18,18 +18,17 @@
   --grad_color2: #f6a63d;
 }
 
-.link_color,
 a {
   font-weight: 500;
   /* color: var(--cs-primary_color) !important; */
   text-decoration: none !important;
   color: rgb(82, 82, 252) !important;
 }
-a:hover,
+/* a:hover,
 .link_color:hover {
   color: black !important;
   background-color: aliceblue !important;
-}
+} */
 
 body {
   background-color: black;

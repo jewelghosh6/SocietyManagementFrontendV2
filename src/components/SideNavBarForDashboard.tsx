@@ -68,8 +68,8 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
             return (
               <NavLink key={index}
                 className={({ isActive }) =>
-                  `margin_left_15 ps-3 cursor_pointer nav_items d-flex hover_menu_item border_radious_10px my-1
-                   ${navBarColapsed ? " py-6px  flex-column" : " py-14px"}
+                  `  cursor_pointer nav_items d-flex hover_menu_item border_radious_10px my-1
+                   ${navBarColapsed ? "margin_left_8 ps-2 py-6px  flex-column" : " ps-3 margin_left_16 py-14px"}
                    ${isActive ? 'active-link' : ''}`
                 }
                 to={item.url}

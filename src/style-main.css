@@ -292,10 +292,25 @@ body::-webkit-scrollbar-thumb {
 .border_radious_10px {
   /* border-radius: 10px; */
 }
-.margin_left_15 {
+.margin_left_16 {
   margin-left: -16px;
 }
-
+.margin_left_8 {
+  margin-left: -8px;
+}
+/* 
 .breadcrumb-item.active {
   color: var();
+} */
+
+.dropdown_dashboard_topnav a {
+  color: black !important;
 }
+.dropdown_dashboard_topnav a:hover,
+.link_color:hover {
+  color: rgb(82, 82, 252) !important;
+  background-color: aliceblue;
+}
+/* .offcanvas-body a {
+  color: black !important;
+} */

@@ -62,9 +62,9 @@ const LayoutMain: FC<LayoutMainProps> = () => {
         },
         {
             accessKey: "can_view_all_flat_details",
-            url: "/flat-details",
+            url: "/manage-flats",
             icon: <MdMeetingRoom />,
-            title: "Flat Details"
+            title: "Manage Flats"
         },
         {
             accessKey: "can_view_single_flat_details",

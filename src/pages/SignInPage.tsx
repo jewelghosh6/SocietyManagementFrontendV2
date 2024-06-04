@@ -24,7 +24,7 @@ const SignInPage = () => {
       }
       return resp;
     } catch (error: any) {
-      if (error.response.data.error_code = "account_under_review") {
+      if (error.response.data.error_code === "account_under_review") {
         navigate('/account-under-review');
       }
       console.error('Error from Signin api call', error);

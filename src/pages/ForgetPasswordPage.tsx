@@ -1,14 +1,26 @@
+import axios from "axios";
 import { Image } from "react-bootstrap"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import config from "../environments/config";
+import toast from "react-hot-toast";
 
 const ForgetPasswordPage = () => {
 
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate()
 
-  const formSubmitHandler = (data: any) => {
+  const formSubmitHandler = async (data: any) => {
     console.log(data);
+    try { 
+      //Request Password Change
+      let resp = await axios.post(`${config.API_URL}/auth/forgot-password`, data);
+      console.log("response", resp.data);
+
+    } catch (error: any) {
+      console.error(error);
+      toast.error(error.response.data.message)
+    }
 
   }
 

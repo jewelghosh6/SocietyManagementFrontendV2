@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import config from "../environments/config";
 import toast from "react-hot-toast";
+import { axiosInstance } from "../utils/axiosInstance";
 
 
 interface FormState {
     [key: string]: boolean;
 }
 const ApproveRegisterReqComp = () => {
+    // const axiosInstance = useAxiosInterceptors();
     const { id } = useParams();
     const [userDetails, setUserDetails] = useState<any>({})
     const [roleList, setRoleList] = useState([]);
@@ -24,7 +26,7 @@ const ApproveRegisterReqComp = () => {
 
     const fetchUserReqDetails = async () => {
         try {
-            let response = await axios.get(`${config.API_URL}/user/register-request/${id}`);
+            let response = await axiosInstance.get(`${config.API_URL}/user/register-request/${id}`);
             console.log("Response from api", response.data.data);
             setUserDetails(response.data.data)
         } catch (error) {
@@ -34,7 +36,7 @@ const ApproveRegisterReqComp = () => {
 
     const fetchRolesList = async () => {
         try {
-            let response = await axios.get(`${config.API_URL}/roles/get-all`);
+            let response = await axiosInstance.get(`${config.API_URL}/roles/get-all`);
             console.log("Response from api fetchRolesList", response.data.data);
             setRoleList(response.data.data)
         } catch (error) {
@@ -44,7 +46,7 @@ const ApproveRegisterReqComp = () => {
 
     const fetchPermissionsList = async () => {
         try {
-            let response = await axios.get(`${config.API_URL}/permissions/get-all`);
+            let response = await axiosInstance.get(`${config.API_URL}/permissions/get-all`);
             console.log("Response from api fetchPermissionsList", response.data.data);
             setPermissionList(response.data.data)
         } catch (error) {
@@ -55,10 +57,10 @@ const ApproveRegisterReqComp = () => {
     // Initialize the state with the roleList, setting each role as unchecked initially
     const [formState, setFormState] = useState<FormState>(
         {
-            ...roleList.reduce((acc: any, item: any, index: number) => {
+            ...roleList.reduce((acc: any, item: any) => {
                 acc[`role-${item.id}`] = false;
                 return acc;
-            }, {}), ...permissionList.reduce((acc: any, item: any, index) => {
+            }, {}), ...permissionList.reduce((acc: any, item: any) => {
                 acc[`permission-${item.id}`] = false;
                 return acc;
             }, {})
@@ -80,13 +82,13 @@ const ApproveRegisterReqComp = () => {
             // console.log("permpList", permpList);
 
 
-            setFormState((prevState: any) => ({
-                ...roleList.reduce((acc: any, item: any, index: number) => {
+            setFormState(() => ({
+                ...roleList.reduce((acc: any, item: any) => {
                     acc[`role-${item.id}`] = false;
                     return acc;
                 }, {}),
                 [id]: checked,
-                ...permissionList.reduce((acc: any, item: any, index) => {
+                ...permissionList.reduce((acc: any, item: any) => {
                     if (permpList.includes(item.id)) {
                         acc[`permission-${item.id}`] = true;
                     }
@@ -107,10 +109,10 @@ const ApproveRegisterReqComp = () => {
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         // Get selected roles based on the form state
-        const selectedRoles = roleList.filter((item: any, index: number) => formState[`role-${item.id}`]);
+        const selectedRoles = roleList.filter((item: any) => formState[`role-${item.id}`]);
         console.log('Selected roles:', selectedRoles);
 
-        const selectedPermissions = permissionList.filter((item: any, index: number) => formState[`permission-${item.id}`]);
+        const selectedPermissions = permissionList.filter((item: any) => formState[`permission-${item.id}`]);
         console.log('Selected permission:', selectedPermissions);
 
         if (!selectedRoles.length || !selectedPermissions.length) {
@@ -119,7 +121,7 @@ const ApproveRegisterReqComp = () => {
         }
 
         try {
-            let resp = await axios.post(`${config.API_URL}/user/register-request/approve`, {
+            let resp = await axiosInstance.post(`${config.API_URL}/user/register-request/approve`, {
                 userId: id, roles: selectedRoles, permissions: selectedPermissions
             })
             console.log("/user/register-request/approve", resp.data);

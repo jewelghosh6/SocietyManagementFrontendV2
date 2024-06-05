@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom"
-import BreadcrumbsComp from "./BreadcrumbsComp";
+import BreadcrumbsComp from "../components/BreadcrumbsComp";
 
 const ManageUsersInnerLayout = () => {
 

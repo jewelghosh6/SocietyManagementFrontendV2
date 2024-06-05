@@ -3,6 +3,7 @@ import config from "../environments/config";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Image } from "react-bootstrap";
 
 const SignInPage = () => {
   const { register, handleSubmit } = useForm();
@@ -17,12 +18,16 @@ const SignInPage = () => {
         localStorage.setItem("accessToken", resp.data.accessToken)
         localStorage.setItem("refreshToken", resp.data.refreshToken);
         localStorage.setItem("userData", JSON.stringify(resp.data.userData));
+        localStorage.setItem("accessTokenExpireAt", resp.data.accessTokenExpireAt)
 
         navigate('/dashboard');
       }
       return resp;
-    } catch (error) {
-      console.error('Error fetching data:', error);
+    } catch (error: any) {
+      if (error.response.data.error_code === "account_under_review") {
+        navigate('/account-under-review');
+      }
+      console.error('Error from Signin api call', error);
       throw error; // Re-throw the error to trigger toast.promise's error handling
     }
   }
@@ -37,8 +42,10 @@ const SignInPage = () => {
   }
   return <>
     <div className="container-fluid">
-      <div className="row h-100 align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-        <div className="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+      <div className="row  align-items-center justify-content-center" style={{ height: "100vh" }}>
+        <Image className="d-none d-md-block col-md-6 col-lg-7 col-xl-4" src="/illustrations/signin.svg" height="500px" />
+
+        <div className=" col-sm-8 col-md-6 col-lg-5 col-xl-4">
           <div className="shadow rounded p-4 p-sm-5 my-4 mx-3">
             <div className=" mb-3">
               <h3 className="text-center">Sign In</h3>
@@ -54,12 +61,14 @@ const SignInPage = () => {
               </div>
               <div className="d-flex align-items-center justify-content-between mb-4">
                 <div className="form-check">
-                  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                  <label className="form-check-label" htmlFor="exampleCheck1">Remeber me</label>
+                  <input {...register("remember_me", { required: false })} type="checkbox" className="form-check-input" id="rememberMeCheckBox" />
+                  <label className="form-check-label" htmlFor="rememberMeCheckBox">Remeber me</label>
                 </div>
                 <span className="link_text_color cursor_pointer" onClick={() => navigate("/auth/forget-password")}>Forgot Password</span>
               </div>
-              <button type="submit" className="btn btn_primary py-3 w-100 mb-4 text-white">Sign In</button>
+              {/* <div className="justify-content-end" style={{ display: "flex", }}> */}
+              <button type="submit" className="btn w-100 btn_primary py-3  mb-4 text-white">Sign In</button>
+              {/* </div> */}
             </form>
             <p className="text-center mb-0">Don't have an Account? <span className="cursor_pointer text-bold color_blue_hover link_text_color" onClick={() => navigate("/auth/sign-up")}>Sign Up</span></p>
           </div>

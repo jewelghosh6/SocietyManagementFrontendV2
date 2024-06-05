@@ -17,17 +17,25 @@ import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Toaster } from "react-hot-toast";
 import App from "./App.tsx";
-// import { PrimeReactProvider } from "primereact/api";
+import "./App.css";
+import "./css/home-page.css";
+import "./css/layout.style.css"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+
+const queryClient = new QueryClient()
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    {/* <PrimeReactProvider> */}
-
-    <Toaster
-      position="top-right"
-      reverseOrder={false} />
-    <App />
-    {/* </PrimeReactProvider> */}
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <Toaster
+        position="top-right"
+        reverseOrder={false} />
+      <App />
+    </QueryClientProvider>
 
   </React.StrictMode>
 );

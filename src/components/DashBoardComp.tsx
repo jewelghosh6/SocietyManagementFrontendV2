@@ -4,11 +4,11 @@ const DashBoardComp = () => {
     const [userData] = useState(JSON.parse(localStorage.getItem("userData") ?? ""))
 
     return (
-        <div className="m-3 shadow bg-seccondary h-100">
+        <div className="m-3 shadow h-100">
             <div className=" p-4">
                 <div className="greetings_msg d-flex ">
                     <h3>Welcome {userData.first_name}!</h3>
-                    <span className="badge text-bg-primary role_badge">{userData.roles[0]}</span>
+                    <span className="badge text-bg-primary role_badge">{userData.role}</span>
                 </div>
                 <div className="card" style={{ width: "10rem" }}>
                     <div className="card-body">

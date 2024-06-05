@@ -1,8 +1,5 @@
-// import { useState } from 'react'
-import "./App.css";
-import "./css/home-page.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import LayoutMain from "./components/LayoutMain";
+import LayoutMain from "./Layouts/LayoutMain";
 import DashBoardComp from "./components/DashBoardComp";
 import FlatsComp from "./components/FlatsComp";
 import VisitorComp from "./components/VisitorComp";
@@ -19,17 +16,21 @@ import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import NavBarForHome from "./components/NavBarForHome";
 import ManageUsersComp from "./components/ManageUsersComp";
 import RegisterRequestComp from "./components/RegisterRequestComp";
-import ManageUsersInnerLayout from "./components/ManageUsersInnerLayout";
+import ManageUsersInnerLayout from "./Layouts/ManageUsersInnerLayout";
 import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
 import RegistrationStatus from "./pages/RegisterRequestUnderProcessPage";
 import PrivateRoutes from "./shared/ProtectedRoutes";
-import AxiosInterceptorSetup from "./shared/AxiosInterceptorSetup";
+import MyFlatDetailComp from "./components/MyFlatDetailComp";
+import MyBillsComp from "./components/MyBillsComp";
+import FlatDetailsInnerLayout from "./Layouts/FlatDetailsInnerLayout";
+import GroupChatInnerLayout from "./Layouts/GroupChatInnerLayout";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
+
   return (
     <BrowserRouter>
 
-      <AxiosInterceptorSetup />
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
 
@@ -39,6 +40,8 @@ function App() {
           <Route path="/auth/sign-in" element={<SignInPage />} />
           <Route path="/auth/sign-up" element={<SignUpPage />} />
           <Route path="/auth/forget-password" element={<ForgetPasswordPage />} />
+          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+
         </Route>
 
         <Route path="/account-under-review" element={<RegistrationStatus />} />
@@ -53,14 +56,23 @@ function App() {
               <Route path="/manage-users" element={<ManageUsersComp />} />
             </Route>
 
-            <Route path="/flats" element={<FlatsComp />} />
+            <Route path="/manage-flats" element={<FlatDetailsInnerLayout />}  >
+              <Route path="/manage-flats" element={<FlatsComp />} />
+            </Route>
+            <Route path="/my-flat" element={<MyFlatDetailComp />} />
+
             <Route path="/flat-allotment" element={<FaltAllotmentComp />} />
             <Route path="/visitors" element={<VisitorComp />} />
             <Route path="/vehicle" element={<VehicleComp />} />
             <Route path="/suggestions" element={<SuggestionComplaintsComp />} />
-            <Route path="/group-chat" element={<GroupChatComp />} />
+
+            <Route path="/group-chat" element={< GroupChatInnerLayout />} >
+              <Route path="/group-chat" element={<GroupChatComp />} />
+            </Route>
+
             <Route path="/events" element={<EventsComp />} />
-            <Route path="/bills" element={<BillsComp />} />
+            <Route path="/manage-bills" element={<BillsComp />} />
+            <Route path="/my-bills" element={<MyBillsComp />} />
             <Route path="/security" element={<SecurityComp />} />
             <Route path="/vehicle" element={<VehicleComp />} />
           </Route>

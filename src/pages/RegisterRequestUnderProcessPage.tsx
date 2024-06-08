@@ -9,8 +9,8 @@ const RegistrationStatus = () => {
             <Row className="w-100">
                 <Col xs={12} md={8} lg={6} className="mx-auto">
                     <Alert variant="warning" className="shadow-lg rounded-lg border-light text-center">
-                        <i className="bi bi-hourglass-split mb-4" style={{ fontSize: '34px', color: '#f05a76' }}></i>
-                        <h2 className="mb-3" style={{ color: '#f05a76' }}>
+                        <i className="bi bi-hourglass-split mb-4" style={{ fontSize: '34px', color: '#5ee7df' }}></i>
+                        <h2 className="mb-3" style={{ color: '#5ee7df' }}>
                             Your registration request is under review.
                         </h2>
                         <p className="mb-3">

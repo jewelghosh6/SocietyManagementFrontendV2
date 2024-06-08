@@ -11,8 +11,8 @@ export const GradientHamburgerMenu = styled.div`
   border-radius: 5px; /* Add border radius for rounded corners */
 
   background: linear-gradient( to right,
-    #f05a76,
-    #f6a63d); /* Adjust gradient colors */
+    #5ee7df,
+    #b490ca); /* Adjust gradient colors */
 
   /* Optional: Add hover effect for visual feedback */
   &:hover {

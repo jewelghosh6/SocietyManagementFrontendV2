@@ -20,11 +20,13 @@
     var(--gard_color1),
     var(--gard_color2)
   ); */
-  background-image: linear-gradient(
+  /*  background-image: linear-gradient(
     to right,
-    #f05a76,
-    #f6a63d
-  ); /* Example gradient */
+    #5ee7df,
+    #b490ca
+  ); Example gradient */
+  background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
+
   color: white; /* Text color to ensure readability */
   padding: 8px 15px; /* Adjust padding as needed */
   border: none; /* Remove default border */
@@ -39,15 +41,16 @@
   /* color: black; */
 }
 .bg_gradient {
-  background-image: linear-gradient(to right, #f05a76, #f6a63d);
+  /* background-image: linear-gradient(to right, #5ee7df, #b490ca); */
+  background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
 }
 
 .gradient-text {
   background-image: linear-gradient(
     to right,
     #8decb4,
-    #141e46 /* #f05a76,
-    #f6a63d */
+    #141e46 /* #5ee7df,
+    #b490ca */
   ); /* Example gradient */
   color: transparent; /* Make text invisible initially */
   -webkit-background-clip: text; /* Clip background to the text shape (WebKit browsers) */
@@ -149,7 +152,7 @@ tfoot th {
   height: 36px;
   width: 36px;
   border-radius: 50%;
-  background-color: #f05a76;
+  background-color: #5ee7df;
   color: #fff;
   font-family: sans-serif;
 }

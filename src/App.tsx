@@ -18,7 +18,6 @@ import ManageUsersComp from "./components/ManageUsersComp";
 import RegisterRequestComp from "./components/RegisterRequestComp";
 import ManageUsersInnerLayout from "./Layouts/ManageUsersInnerLayout";
 import ApproveRegisterReqComp from "./components/ApproveRegisterReqComp";
-import RegistrationStatus from "./pages/RegisterRequestUnderProcessPage";
 import PrivateRoutes from "./shared/ProtectedRoutes";
 import MyFlatDetailComp from "./components/MyFlatDetailComp";
 import MyBillsComp from "./components/MyBillsComp";

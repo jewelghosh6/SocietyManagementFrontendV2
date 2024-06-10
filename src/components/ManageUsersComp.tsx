@@ -4,9 +4,9 @@ import { AgGridReact } from "ag-grid-react"; // React Grid Logic
 
 import { ColDef } from "ag-grid-community";
 import config from "../environments/config";
-import EditButtonRenderer from "./EditButtonRenderer";
-import DeleteButtonRenderer from "./DeleteButtonRenderer";
-import ManageUsersModal from "./ManageUsersModal";
+import EditButtonRenderer from "./TableCellRenderer/EditButtonRenderer";
+import DeleteButtonRenderer from "./TableCellRenderer/DeleteButtonRenderer";
+import ManageUsersModal from "./Modals/ManageUsersModal";
 import RegisterRequestDropdown from "./RegisterRequestDropdown";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -225,8 +225,6 @@ const GridExample = () => {
                         quickFilterText={searchText} // Apply search filter
                         pagination={true}
                         paginationPageSize={10}
-
-
                     // onRowClicked={onRowClicked}
                     // onCellValueChanged={onCellValueChanged}
                     />

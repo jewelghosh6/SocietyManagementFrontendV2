@@ -7,3 +7,7 @@
   ); */
   background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
 }
+
+.dropdown_dashboard_topnav span {
+  font-weight: 500;
+}

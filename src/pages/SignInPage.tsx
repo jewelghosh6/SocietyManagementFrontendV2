@@ -45,8 +45,8 @@ const SignInPage = () => {
       <div className="row  align-items-center justify-content-center" style={{ height: "100vh" }}>
         <Image className="d-none d-md-block col-md-6 col-lg-7 col-xl-4" src="/illustrations/signin.svg" height="500px" />
 
-        <div className=" col-sm-8 col-md-6 col-lg-5 col-xl-4">
-          <div className="shadow rounded p-4 p-sm-5 my-4 mx-3">
+        <div className=" col-12 col-md-6 col-lg-5 col-xl-4">
+          <div className="  shadow rounded px-4 py-5 px-md-4 py-md-5  my-4 mx-auto sign_in_form_div" style={{ maxWidth: "400px" }}>
             <div className=" mb-3">
               <h3 className="text-center">Sign In</h3>
             </div>
@@ -67,7 +67,7 @@ const SignInPage = () => {
                 <span className="link_text_color cursor_pointer" onClick={() => navigate("/auth/forget-password")}>Forgot Password</span>
               </div>
               {/* <div className="justify-content-end" style={{ display: "flex", }}> */}
-              <button type="submit" className="btn w-100 btn_primary py-3  mb-4 text-white">Sign In</button>
+              <button type="submit" className="btn w-100 btn_primary py-3  mb-4 ">Sign In</button>
               {/* </div> */}
             </form>
             <p className="text-center mb-0">Don't have an Account? <span className="cursor_pointer text-bold color_blue_hover link_text_color" onClick={() => navigate("/auth/sign-up")}>Sign Up</span></p>

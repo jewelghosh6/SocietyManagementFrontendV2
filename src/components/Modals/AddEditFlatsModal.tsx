@@ -40,10 +40,15 @@ const AddEditFlatsModal: FC<MyModalProps> = ({ type, data, show, handleClose }) 
 
     const [formData, setFormData] = useState<any>({});
 
-    const addFlatHandler = async (data: any) => {
+    const addFlatHandler = async (e: any) => {
+        e.preventDefault()
         try {
-            let resp = await axiosInstance.post('/flats/add', data)
+            let resp = await axiosInstance.post('/flats/add', formData)
             console.log("resp", resp);
+            if (resp.data.success) {
+                toast.success(resp.data.message)
+                handleModalClose();
+            }
         } catch (error) {
             console.log(error);
         }

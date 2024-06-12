@@ -10,6 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../utils/axiosInstance";
 import config from "../environments/config";
 import toast from "react-hot-toast";
+import { GoPasskeyFill } from "react-icons/go";
+
 
 
 const TopNavBar = () => {
@@ -102,8 +104,11 @@ const TopNavBar = () => {
                         </Dropdown.Header>
                         <Dropdown.Divider />
                         <div className="d-flex flex-column  py-2 fs-14 dropdown_dashboard_topnav">
-                            <Link to={"#"} className="py-1 px-3"><MdAccountCircle className="me-2 " size={20} />My Profile</Link>
-                            <Link to={"#"} className="py-1 px-3"><IoSettingsSharp className="me-2" size={20} />Account Settings</Link>
+                            <Link to={"user/my-profile"} className="py-1 px-3"><MdAccountCircle className="me-2 " size={20} />My Profile</Link>
+                            <Link to={"user/account-settings"} className="py-1 px-3"><IoSettingsSharp className="me-2" size={20} />Account Settings</Link>
+                            <Link to={"auth/change-password"} className="py-1 px-3"><GoPasskeyFill className="me-2" size={20} />Change Password</Link>
+
+
                             <span role="button" onClick={signOutButtonClickHandler} className="py-1 link_color px-3">
                                 <FaSignOutAlt className="me-2" size={20} />
                                 Sign Out

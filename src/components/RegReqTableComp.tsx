@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from 'ag-grid-community';
-import ApproveRegReqButtonRenderer from './ApproveRegReqButtonRenderer';
+import ApproveRegReqButtonRenderer from './TableCellRenderer/ApproveRegReqButtonRenderer';
 import config from '../environments/config';
 import { axiosInstance } from '../utils/axiosInstance';
 

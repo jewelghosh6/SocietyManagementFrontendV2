@@ -13,6 +13,9 @@
 .btn_secondary:hover {
   color: black !important;
 }
+.btn {
+  border: none !important;
+}
 
 .btn_primary {
   /* background-image: linear-gradient(
@@ -20,12 +23,14 @@
     var(--gard_color1),
     var(--gard_color2)
   ); */
-  background-image: linear-gradient(
+  /*  background-image: linear-gradient(
     to right,
-    #f05a76,
-    #f6a63d
-  ); /* Example gradient */
-  color: white; /* Text color to ensure readability */
+    #5ee7df,
+    #b490ca
+  ); Example gradient */
+  background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
+
+  color: white !important; /* Text color to ensure readability */
   padding: 8px 15px; /* Adjust padding as needed */
   border: none; /* Remove default border */
   border-radius: 8px; /* Add rounded corners */
@@ -37,17 +42,19 @@
     black
   ); /* Example with slightly darker colors */
   /* color: black; */
+  color: white !important;
 }
 .bg_gradient {
-  background-image: linear-gradient(to right, #f05a76, #f6a63d);
+  /* background-image: linear-gradient(to right, #5ee7df, #b490ca); */
+  background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
 }
 
 .gradient-text {
   background-image: linear-gradient(
     to right,
     #8decb4,
-    #141e46 /* #f05a76,
-    #f6a63d */
+    #141e46 /* #5ee7df,
+    #b490ca */
   ); /* Example gradient */
   color: transparent; /* Make text invisible initially */
   -webkit-background-clip: text; /* Clip background to the text shape (WebKit browsers) */
@@ -149,7 +156,8 @@ tfoot th {
   height: 36px;
   width: 36px;
   border-radius: 50%;
-  background-color: #f05a76;
+  /* background-color: #5ee7df; */
+  background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
   color: #fff;
   font-family: sans-serif;
 }
@@ -314,3 +322,10 @@ body::-webkit-scrollbar-thumb {
 /* .offcanvas-body a {
   color: black !important;
 } */
+
+@media (max-width: 576px) {
+  .sign_in_form_div {
+    max-width: 350px !important;
+    /* padding: 20px 10px !important; */
+  }
+}

@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LayoutMain from "./Layouts/LayoutMain";
 import DashBoardComp from "./components/DashBoardComp";
-import FlatsComp from "./components/FlatsComp";
+import ManageFlatsComp from "./components/ManageFlatsComp";
 import VisitorComp from "./components/VisitorComp";
 import VehicleComp from "./components/VehicleComp";
 import BillsComp from "./components/BillsComp";
@@ -25,6 +25,10 @@ import MyBillsComp from "./components/MyBillsComp";
 import FlatDetailsInnerLayout from "./Layouts/FlatDetailsInnerLayout";
 import GroupChatInnerLayout from "./Layouts/GroupChatInnerLayout";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ChangePasswordPage from "./pages/ChangePasswordPage";
+import UserSectionLayout from "./Layouts/UserSectionLayout";
+import MyProfilePage from "./pages/MyProfilePage";
+import AccountSettings from "./pages/AccountSettings";
 
 function App() {
 
@@ -41,10 +45,16 @@ function App() {
           <Route path="/auth/sign-up" element={<SignUpPage />} />
           <Route path="/auth/forget-password" element={<ForgetPasswordPage />} />
           <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
-
+          <Route path="/auth/change-password" element={<ChangePasswordPage />} />
         </Route>
 
         <Route path="/account-under-review" element={<RegistrationStatus />} />
+
+        <Route path="/user" element={<UserSectionLayout />} >
+          <Route path="my-profile" element={<MyProfilePage />} />
+          <Route path="account-settings" element={<AccountSettings />} />
+        </Route>
+
 
         <Route element={<PrivateRoutes />}>
           <Route path="/" element={<LayoutMain />} >
@@ -57,7 +67,7 @@ function App() {
             </Route>
 
             <Route path="/manage-flats" element={<FlatDetailsInnerLayout />}  >
-              <Route path="/manage-flats" element={<FlatsComp />} />
+              <Route path="/manage-flats" element={<ManageFlatsComp />} />
             </Route>
             <Route path="/my-flat" element={<MyFlatDetailComp />} />
 

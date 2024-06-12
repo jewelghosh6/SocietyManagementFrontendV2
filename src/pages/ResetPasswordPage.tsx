@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import config from "../environments/config";
 import toast from "react-hot-toast";
+
+// Define the expected structure of the error response data
+interface ErrorResponse {
+  message: string;
+}
 
 const ResetPasswordPage = () => {
   const [searchParams] = useSearchParams();
@@ -23,7 +28,7 @@ const ResetPasswordPage = () => {
             token: searchParams.get('token'),
           })
         return resp;
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         throw error;
 
@@ -45,7 +50,7 @@ const ResetPasswordPage = () => {
     } catch (error: any) {
       console.error(error);
       toast.error(error.response.data.message);
-      navigate('/auth/sign-in');
+      return;
     }
 
 
@@ -53,8 +58,13 @@ const ResetPasswordPage = () => {
   }
   if (isPending) return 'Loading...'
 
-  if (error) return 'An error has occurred: ' + error.message
-
+  if (error) {
+    const axiosError = error as AxiosError<ErrorResponse>;
+    const errorMessage = axiosError?.response?.data?.message
+      ? `An error has occurred: ${axiosError.response.data.message}`
+      : 'An error has occurred.';
+    return errorMessage;
+  }
   return (
     <div className="d-flex justify-content-center align-items-center " style={{ height: "100vh" }}>
 

@@ -12,9 +12,13 @@ const ForgetPasswordPage = () => {
 
   const formSubmitHandler = async (data: any) => {
     console.log(data);
-    try { 
+    try {
       //Request Password Change
       let resp = await axios.post(`${config.API_URL}/auth/forgot-password`, data);
+      if (resp.data.success) {
+        toast.success("Mail sent! Please Check Your Mail Inbox.")
+        navigate('/auth/sign-in')
+      }
       console.log("response", resp.data);
 
     } catch (error: any) {

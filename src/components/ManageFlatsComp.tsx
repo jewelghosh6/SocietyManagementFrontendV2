@@ -91,7 +91,6 @@ const ManageFlatsComp = () => {
     { headerName: 'Flat Area', field: "flat_area", minWidth: 60, maxWidth: 150 },
     { headerName: 'Total Rooms', field: "total_rooms", minWidth: 60, maxWidth: 150 },
     { headerName: 'Parking space available', field: "parking_space_alloted", minWidth: 80, maxWidth: 180 },
-
     {
       headerName: 'Allocated ?',
       cellRenderer: FlatAlocationCellRenderer, // Use custom cell renderer for edit button
@@ -101,10 +100,19 @@ const ManageFlatsComp = () => {
       },
     },
     {
+      headerName: 'Owner Info',
+      valueGetter: (params: any) => {
+        return params.data.user ? `${params.data.user.first_name} ${params.data.user.last_name}(${params.data.user_id})` :
+          "Not Available"
+      },
+      minWidth: 80,
+      maxWidth: 160
+    },
+    {
       headerName: 'Edit',
       cellRenderer: EditButtonRenderer, // Use custom cell renderer for edit button
       minWidth: 35, // Adjust the width of the column as needed
-      maxWidth: 150,
+      maxWidth: 90,
       suppressMenu: true, // Hide column menu
       cellRendererParams: {
         onClick: handleEditClick,
@@ -115,7 +123,7 @@ const ManageFlatsComp = () => {
       headerName: 'Delete',
       cellRenderer: DeleteButtonRenderer, // Use custom cell renderer for edit button
       minWidth: 35, // Adjust the width of the column as needed
-      maxWidth: 150,
+      maxWidth: 90,
       suppressMenu: true, // Hide column menu
     },
   ]);

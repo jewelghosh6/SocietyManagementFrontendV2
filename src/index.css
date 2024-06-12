@@ -104,3 +104,9 @@ button:focus-visible {
   padding: 12px 15px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
+.spinner-border {
+  --bs-spinner-width: 1.5rem !important;
+  --bs-spinner-height: 1.5rem !important;
+  --bs-spinner-border-width: 0.21em !important;
+}

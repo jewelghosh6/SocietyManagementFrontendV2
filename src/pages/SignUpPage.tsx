@@ -47,8 +47,8 @@ const SignUpPage = () => {
             <h3>Sign Up</h3>
           </div>
           <form onSubmit={handleSubmit(formSubmitHandler)}>
-            <div className="row">
-              <div className=" col-12 col-md-6 form-floating mb-3">
+            <div className="row fl_name">
+              <div className=" col-12 col-md-6  form-floating mb-3">
                 <input
                   type="text"
                   className="form-control"

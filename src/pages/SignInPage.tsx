@@ -4,11 +4,17 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Image } from "react-bootstrap";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useState } from "react";
+import TooltipCustom from "../components/shared/TooltipCustom";
+
 
 const SignInPage = () => {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm();
   const navigate = useNavigate()
-  console.log("isSubmitting", isSubmitting);
+  // console.log("isSubmitting", isSubmitting);
+  const [showPass, setShowPass] = useState(false)
+
 
   const submitFormData = async (data: any) => {
     try {
@@ -58,9 +64,21 @@ const SignInPage = () => {
                 <input {...register("email", { required: true })} type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
                 <label htmlFor="floatingInput">Email address</label>
               </div>
-              <div className="form-floating mb-4">
-                <input {...register("password", { required: true })} type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+              <div className="form-floating mb-4 position-relative">
+                <input {...register("password", { required: true })} type={showPass ? "text" : "password"} className="form-control" id="floatingPassword" placeholder="Password" />
                 <label htmlFor="floatingPassword">Password</label>
+                <span className="position-absolute pass_show_hide cursor-point" onClick={() => setShowPass(pre => !pre)}>
+                  {showPass ? (
+                    <TooltipCustom text="Hide Password">
+                      <FiEyeOff />
+                    </TooltipCustom>
+                  ) : (
+                    <TooltipCustom text="Show Password">
+                      <FiEye />
+                    </TooltipCustom>
+                  )}
+
+                </span>
               </div>
               <div className="d-flex align-items-center justify-content-between mb-4">
                 <div className="form-check">

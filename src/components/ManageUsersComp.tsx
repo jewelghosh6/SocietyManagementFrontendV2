@@ -230,7 +230,7 @@ const GridExample = () => {
                     />
                 </div>
             </div>
-            <ManageUsersModal show={showModal} handleClose={modalCloseHandler} userData={userData[userToEdit]} />
+            {/* <ManageUsersModal show={showModal} handleClose={modalCloseHandler} userData={userData[userToEdit]} /> */}
         </>
     );
 };

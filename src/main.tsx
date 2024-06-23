@@ -12,6 +12,8 @@ import 'primeflex/primeflex.css';
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
+import "./css/sign-in-page.css"
+
 
 
 import "bootstrap/dist/css/bootstrap.min.css";

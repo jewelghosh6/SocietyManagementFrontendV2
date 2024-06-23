@@ -110,3 +110,22 @@ button:focus-visible {
   --bs-spinner-height: 1.5rem !important;
   --bs-spinner-border-width: 0.21em !important;
 }
+
+/* custom.css */
+.tooltip .tooltip-inner {
+  border-radius: 10px; /* Custom border radius */
+  background-color: #9e9d99; /* Custom background color */
+  color: #fff; /* Custom text color */
+}
+
+.tooltip-arrow::before {
+  border-top-color: #a09e93; /* Match the arrow color with the tooltip background */
+  display: none;
+}
+.fl_name > .form-floating > .form-control:focus ~ label {
+  margin: 3px 0 0 9px;
+}
+
+.fl_name > .form-floating > label {
+  margin: 8px 12px;
+}

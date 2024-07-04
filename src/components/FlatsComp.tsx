@@ -1,38 +1,41 @@
-import {
-  useQuery,
-} from '@tanstack/react-query'
+// import {
+//   useQuery,
+// } from '@tanstack/react-query'
+import WebcamCapture from './shared/WebcamCapture'
 
 
 
-function Example() {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['repoData'],
-    queryFn: () =>
-      fetch('https://api.github.com/repos/TanStack/query').then((res) =>
-        res.json(),
-      ),
-  })
+// function Example() {
+//   const { isPending, error, data } = useQuery({
+//     queryKey: ['repoData'],
+//     queryFn: () =>
+//       fetch('https://api.github.com/repos/TanStack/query').then((res) =>
+//         res.json(),
+//       ),
+//   })
 
-  if (isPending) return 'Loading...'
+//   if (isPending) return 'Loading...'
 
-  if (error) return 'An error has occurred: ' + error.message
+//   if (error) return 'An error has occurred: ' + error.message
 
-  return (
-    <div>
-      <h1>{data.name}</h1>
-      <p>{data.description}</p>
-      <strong>👀 {data.subscribers_count}</strong>{' '}
-      <strong>✨ {data.stargazers_count}</strong>{' '}
-      <strong>🍴 {data.forks_count}</strong>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <h1>{data.name}</h1>
+//       <p>{data.description}</p>
+//       <strong>👀 {data.subscribers_count}</strong>{' '}
+//       <strong>✨ {data.stargazers_count}</strong>{' '}
+//       <strong>🍴 {data.forks_count}</strong>
+//     </div>
+//   )
+// }
 
 const FlatsComp = () => {
   return (
     <>
       <div>FlatsComp</div>
-      <Example />
+      {/* <Example /> */}
+      <WebcamCapture />
+
     </>
   )
 }

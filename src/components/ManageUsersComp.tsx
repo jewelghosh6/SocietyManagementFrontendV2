@@ -6,7 +6,7 @@ import { ColDef } from "ag-grid-community";
 import config from "../environments/config";
 import EditButtonRenderer from "./TableCellRenderer/EditButtonRenderer";
 import DeleteButtonRenderer from "./TableCellRenderer/DeleteButtonRenderer";
-import ManageUsersModal from "./Modals/ManageUsersModal";
+// import ManageUsersModal from "./Modals/ManageUsersModal";
 import RegisterRequestDropdown from "./RegisterRequestDropdown";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -58,7 +58,7 @@ const GridExample = () => {
 
 
     const [registerRequestsData, setRegisterRequestsData] = useState([]);
-    const [userToEdit, setUserToEdit] = useState<number>(0);
+    // const [userToEdit, setUserToEdit] = useState<number>(0);
     useLayoutEffect(() => {
         //For getting all users whose acoount is not under review
         fetchUserData()
@@ -131,15 +131,15 @@ const GridExample = () => {
     const handleEditClick = (rowData: IRow) => {
         // Implement edit logic here (open edit dialog, update row data, etc.)
         console.log('Edit clicked for row:', rowData);
-        setUserToEdit(rowData.id)
+        // setUserToEdit(rowData.id)
         setShowModal(true);
         console.log("setShowModal(true);", showModal);
 
     };
 
-    const modalCloseHandler = () => {
-        setShowModal(false)
-    }
+    // const modalCloseHandler = () => {
+    //     setShowModal(false)
+    // }
 
     const fetchUserData = async () => {
         try {
@@ -204,11 +204,13 @@ const GridExample = () => {
                     >
                         <span className="cursor_pointer d-flex justify-content-between" onClick={refreshUserData}>
                             <span className="me-2 fs_15">Refresh Data</span>
-                            <Player src={animation} ref={playerRef}
-                                style={{ width: "25px", height: "25px" }}
-                                loop={false}
-                                autoplay={false} // Set autoplay to false to control playback manually
-                            />
+                            <div className="refresh_lotie">
+                                <Player src={animation} ref={playerRef}
+                                    style={{ width: "25px", height: "25px" }}
+                                    loop={false}
+                                    autoplay={false} // Set autoplay to false to control playback manually
+                                />
+                            </div>
                         </span>
                         <span className="fs_10">Last refreshed:{refreshAt.toLocaleTimeString()}</span>
                     </div>

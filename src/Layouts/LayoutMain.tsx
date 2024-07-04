@@ -1,7 +1,7 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import SideNavBarForDashboard from '../components/SideNavBarForDashboard'
 import TopNavBar from '../components/TopNaavBar'
-import { FC, createContext, useEffect, useState } from 'react';
+import { FC, createContext, useState } from 'react';
 
 import { MdBallot, MdManageAccounts, MdMeetingRoom } from 'react-icons/md';
 import { RiBillFill, RiDashboard3Fill } from 'react-icons/ri';
@@ -9,8 +9,8 @@ import { IoIosPeople } from 'react-icons/io';
 import { FaNoteSticky, FaUserSecret } from 'react-icons/fa6';
 import { PiChatsFill } from 'react-icons/pi';
 import { BsCalendarEventFill } from 'react-icons/bs';
-import axios from 'axios';
-import config from '../environments/config';
+// import axios from 'axios';
+// import config from '../environments/config';
 
 interface LayoutMainProps {
     children?: React.ReactNode; // Optional children prop
@@ -19,29 +19,29 @@ export const UserSpecificMenuContext = createContext<any>([]);
 
 const LayoutMain: FC<LayoutMainProps> = () => {
     const [navBarColapsed, setNavBarCollapsed] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        let intervalId = setInterval(async () => {
-            console.log("inside setInterval");
+    // useEffect(() => {
+    //     let intervalId = setInterval(async () => {
+    //         console.log("inside setInterval");
 
-            if (new Date(localStorage.getItem("accessTokenExpireAt") ?? "") < new Date()) {
-                let refreshToken = localStorage.getItem("refreshToken");
-                if (!refreshToken) {
-                    navigate('/auth/sign-in');
-                }
-                let res = await axios.post(`${config.API_URL}/auth/generate-access-token`, { refreshToken })
-                if (res.status === 200) {
-                    localStorage.setItem('accessToken', res.data.accessToken);
-                }
+    //         if (new Date(localStorage.getItem("accessTokenExpireAt") ?? "") < new Date()) {
+    //             let refreshToken = localStorage.getItem("refreshToken");
+    //             if (!refreshToken) {
+    //                 navigate('/auth/sign-in');
+    //             }
+    //             let res = await axios.post(`${config.API_URL}/auth/generate-access-token`, { refreshToken })
+    //             if (res.status === 200) {
+    //                 localStorage.setItem('accessToken', res.data.accessToken);
+    //             }
 
-            }
-        }, 3 * 60 * 1000)
+    //         }
+    //     }, 3 * 60 * 1000)
 
-        return () => {
-            clearInterval(intervalId)
-        }
-    }, [])
+    //     return () => {
+    //         clearInterval(intervalId)
+    //     }
+    // }, [])
 
     const [permissions] = useState(JSON.parse(localStorage.getItem("userData") ?? "").permissions);
 
@@ -116,7 +116,7 @@ const LayoutMain: FC<LayoutMainProps> = () => {
         },
         {
             accessKey: "have_access_to_group_chat",
-            url: "/group-chat",
+            url: "chat",
             icon: <PiChatsFill />,
             title: "Group Chat"
         },

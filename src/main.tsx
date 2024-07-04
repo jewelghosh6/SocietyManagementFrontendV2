@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./style-main.css";
@@ -13,6 +12,7 @@ import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
 import "./css/sign-in-page.css"
+import "./css/chatcomp.css"
 
 
 
@@ -30,14 +30,14 @@ const queryClient = new QueryClient()
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <Toaster
-        position="top-right"
-        reverseOrder={false} />
-      <App />
-    </QueryClientProvider>
+  // <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools initialIsOpen={false} />
+    <Toaster
+      position="top-right"
+      reverseOrder={false} />
+    <App />
+  </QueryClientProvider>
 
-  </React.StrictMode>
+  // </React.StrictMode>
 );

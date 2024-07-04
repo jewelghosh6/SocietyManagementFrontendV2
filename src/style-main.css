@@ -202,7 +202,7 @@ tfoot th {
 .lf-player-container {
   position: relative;
 }
-div#lottie {
+.refresh_lotie * {
   position: absolute;
   right: 0;
   top: -2px;

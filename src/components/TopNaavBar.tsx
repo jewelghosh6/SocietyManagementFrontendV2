@@ -48,7 +48,7 @@ const TopNavBar = () => {
     }
 
     return (
-        <div className="position-sticky top-0 z-1 shadow d-flex justify-content-between  justify-content-md-end align-items-center py-2 py-md-3 px-4" style={{ backgroundColor: "white" }}>
+        <div className="position-sticky top-0 z-2 shadow d-flex justify-content-between  justify-content-md-end align-items-center py-2 py-md-3 px-4" style={{ backgroundColor: "white" }}>
             <DrawerForDashboardMenu />
             <div className="d-flex align-items-center topnav_options">
                 <ThemeToggleComp />

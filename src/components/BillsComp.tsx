@@ -1,7 +1,10 @@
+import WebcamCapture from "./shared/WebcamCapture"
 
 const BillsComp = () => {
   return (
-    <div>BillsComp</div>
+    <div>BillsComp
+      <WebcamCapture />
+    </div>
   )
 }
 

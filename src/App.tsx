@@ -29,6 +29,7 @@ import ChangePasswordPage from "./pages/ChangePasswordPage";
 import UserSectionLayout from "./Layouts/UserSectionLayout";
 import MyProfilePage from "./pages/MyProfilePage";
 import AccountSettings from "./pages/AccountSettings";
+import MessageContainerComp from "./components/MessageContainerComp";
 
 function App() {
 
@@ -76,8 +77,10 @@ function App() {
             <Route path="/vehicle" element={<VehicleComp />} />
             <Route path="/suggestions" element={<SuggestionComplaintsComp />} />
 
-            <Route path="/group-chat" element={< GroupChatInnerLayout />} >
-              <Route path="/group-chat" element={<GroupChatComp />} />
+            <Route path="/chat" element={< GroupChatInnerLayout />} >
+              <Route path="/chat" element={<GroupChatComp />} >
+                <Route path="/chat/:chatId" element={< MessageContainerComp />} />
+              </Route>
             </Route>
 
             <Route path="/events" element={<EventsComp />} />

@@ -1,0 +1,88 @@
+.conversation_list {
+  max-height: 80svh;
+  overflow: auto;
+}
+
+.conversation_detail_header {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #5fa2c8;
+}
+
+.conversation_footer_input {
+  /* display: flex; */
+  /* position: absolute; */
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.conversation_detail_div {
+  position: relative;
+}
+
+.msg_container {
+  height: 370px;
+  overflow: auto;
+}
+
+.justify_flex_start {
+  justify-content: flex-start;
+}
+.justify_flex_end {
+  justify-content: flex-end;
+}
+/* .left_msg_ext::before {
+  content: "";
+  height: 7px;
+  background-color: black;
+  display: block;
+  width: 5px;
+} */
+.msg_time {
+  font-size: 10px;
+}
+.active_chat {
+  background-color: rgb(0, 0, 0, 0.15) !important;
+  color: black !important;
+}
+.back-arrow:hover {
+  background-color: rgb(0, 0, 0, 0.15);
+  border-radius: 50%;
+}
+.conversation_list .badge {
+  border-radius: 50% !important;
+}
+.send-btn {
+  max-width: 50px;
+}
+
+.msg_input {
+  max-width: 80vw;
+}
+.user_search_box {
+  position: sticky;
+  top: 0;
+  background-color: #5fa2c8;
+}
+
+.search_clear_btn {
+  top: 5px;
+  right: 2px;
+  cursor: pointer;
+}
+
+.active_chat * {
+  /* background-color: inherit; */
+  /* background-color: rgb(0, 0, 255, 0.25); */
+  /* background-color: #110a0a; Change this to your desired background color */
+  color: black;
+}
+
+/* .voice_type_msg_input * {
+  position: relative !important;
+  right: -9px !important;
+  top: -12px !important;
+} */

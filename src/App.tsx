@@ -79,7 +79,7 @@ function App() {
 
             <Route path="/chat" element={< GroupChatInnerLayout />} >
               <Route path="/chat" element={<GroupChatComp />} >
-                <Route path="/chat/:chatId" element={< MessageContainerComp />} />
+                <Route path="/chat/:chatEventKey" element={< MessageContainerComp />} />
               </Route>
             </Route>
 

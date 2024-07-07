@@ -6,7 +6,7 @@ import { Outlet, useLocation, useNavigate, NavLink } from "react-router-dom";
 import useMediaQuery from "../hooks/useMediaQuery";
 import SearchBox from "./SearchBox";
 import { axiosInstance } from "../utils/axiosInstance";
-export const SelectedChatContext = createContext({ participants: { recipient: [], sender: {} } })
+export const SelectedChatContext = createContext({ participants: { recipient: [], sender: { conversation_id: 0 } } })
 
 
 const GroupChatComp = () => {
@@ -30,7 +30,7 @@ const GroupChatComp = () => {
     const fetchConversations = async () => {
         try {
             let resp = await axiosInstance.get('/chat/fetch-conversations');
-            // console.log({ data: resp.data });
+            console.log({ data: resp.data.data });
             setConversationList(resp.data.data)
 
         } catch (error) {
@@ -105,10 +105,10 @@ const GroupChatComp = () => {
                 }
                 {searchResults.length && conversationList.length ? <h5>Exsisting Chats</h5> : ""}
 
-                <div className="px-3 py-2 t">
+                <div className="px-3 py-2 ">
                     {
                         conversationList.map((conversation: any, i) =>
-                            <NavLink to={`/chat/${conversation.event_key}`} key={i}
+                            <NavLink to={`/chat/${conversation.participants.sender.conversation.event_key}`} key={i}
                                 className={({ isActive }) => `${isActive ? "active_chat" : ""}  col-10 p-0  m-0 cursor-pointer `}
                                 onClick={() => {
                                     setChat(conversation)
@@ -118,7 +118,7 @@ const GroupChatComp = () => {
                                         {/* <img src="" alt="" /> */}
                                         <div className="user_name_nav_wrapper  d-flex align-items-center cursor_pointer ">
                                             <div className=" account_initials" >
-                                                <span className="m-auto name_initial_wrapper">{conversation.participants?.recipient[0].first_name.charAt(0).toUpperCase()}</span>
+                                                <span className="m-auto name_initial_wrapper">{conversation.participants?.recipient[0].user.first_name.charAt(0).toUpperCase()}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -128,8 +128,8 @@ const GroupChatComp = () => {
                                             <span className="fw-bolder">
                                                 {
                                                     conversation.conversation_name ||
-                                                    (conversation.participants.recipient[0].first_name + " " +
-                                                        conversation.participants.recipient[0].last_name)
+                                                    (conversation.participants.recipient[0].user.first_name + " " +
+                                                        conversation.participants.recipient[0].user.last_name)
                                                 }
                                             </span>
                                             <div className="d-flex flex-column justify-content-center">
@@ -148,7 +148,10 @@ const GroupChatComp = () => {
                     }
                 </div>
             </div>
-            <div className={`${showMsgContainerOnly ? " d-sm-inline col-sm-12 col-md-8 bg-cyan-50 conversation_detail_div " : "d-none"}`}>
+            <div
+                //  className="d-sm-inline col-sm-12 col-md-8 bg-cyan-50 conversation_detail_div "
+                className={`${showMsgContainerOnly || !isMobileMedQuery ? "d-inline col-sm-12 col-md-8 bg-cyan-50 conversation_detail_div " : "d-none"}`}
+            >
                 <SelectedChatContext.Provider value={chat}>
                     <Outlet />
                 </SelectedChatContext.Provider>

@@ -4,16 +4,17 @@
 }
 
 .conversation_detail_header {
-  /* position: absolute; */
-  top: 0;
+  position: static !important;
   left: 0;
   right: 0;
   background-color: #5fa2c8;
+  top: 20px !important;
+  z-index: 9999 !important;
 }
 
 .conversation_footer_input {
   /* display: flex; */
-  /* position: absolute; */
+  position: absolute !important;
   bottom: 0;
   left: 0;
   right: 0;
@@ -24,7 +25,8 @@
 }
 
 .msg_container {
-  height: 370px;
+  /* height: 370px; */
+  height: calc(100svh - 230px) !important;
   overflow: auto;
 }
 
@@ -86,3 +88,79 @@
   right: -9px !important;
   top: -12px !important;
 } */
+
+.msg_container_height {
+  height: calc(100svh - 105px) !important;
+}
+
+/* @media screen and (max-width: 399px) {
+  .form-control.msg_input {
+    max-width: 160px !important;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  .form-control.msg_input {
+    max-width: 200px !important;
+  }
+}
+@media screen and (min-width: 601px) {
+  .form-control.msg_input {
+    max-width: 100% !important;
+  }
+} */
+.msg_input {
+  border-radius: 20px !important;
+}
+/* .msg_input_emoji_btn {
+  left: 0;
+}
+
+.msg_input_attachment_btn {
+  right: 0;
+} */
+
+.conversation_detail_header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.conversation_footer_input {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.single_msg_body {
+  max-width: 78% !important;
+  min-width: 105px !important;
+}
+/* 
+.triangle-right {
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 14px;
+  border-right: 10px solid transparent;
+  border-top: 10px solid blue;
+  top: 8px;
+} */
+
+.msg_box_right {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.msg_box_left {
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.conversation_box {
+  /* border-bottom: 1px solid rgb(184, 116, 116) !important; */
+}
+.conversation_box:hover {
+  background-color: rgba(58, 242, 242, 0.3);
+  border-radius: 5px;
+}

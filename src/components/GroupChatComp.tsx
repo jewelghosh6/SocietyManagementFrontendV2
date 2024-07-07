@@ -20,10 +20,10 @@ const GroupChatComp = () => {
     const isMobileMedQuery = useMediaQuery('(max-width: 767px)');
     const regex = /^\/chat\/[A-Za-z0-9]{2,}$/;
     ;
-    const [isMobile, setIsMobile] = useState(regex.test(location.pathname) && isMobileMedQuery);
+    const [showMsgContainerOnly, setShowMsgContainerOnly] = useState(regex.test(location.pathname) && isMobileMedQuery);
 
     useEffect(() => {
-        setIsMobile(regex.test(location.pathname) && isMobileMedQuery)
+        setShowMsgContainerOnly(regex.test(location.pathname) && isMobileMedQuery)
     }, [location.pathname, isMobileMedQuery])
 
 
@@ -42,7 +42,7 @@ const GroupChatComp = () => {
         fetchConversations().then(res => console.log(res)).catch(err => console.error(err))
     }, [])
 
-    // console.log({ location }, { isMobile });
+    // console.log({ location }, { showMsgContainerOnly });
     // console.log("regex.test(location.pathname)", regex.test(location.pathname));
 
     const handleUserSearch = async (inputValue: string) => {
@@ -73,8 +73,8 @@ const GroupChatComp = () => {
 
 
     return (
-        <div className="row  h-100 g-0 px-3 py-2 ">
-            <div className={`${isMobile ? "d-none" : "d-inline col-md-4 bg-gray-200 conversation_list "} `} >
+        <div className="row   msg_container_height g-0 px-3 py-2 ">
+            <div className={`${showMsgContainerOnly ? "d-none" : "d-inline col-md-4 bg-gray-200 conversation_list rounded "}`} >
                 <div className="user_search_box p-2 ">
                     <SearchBox onSearch={handleUserSearch} />
                 </div>
@@ -105,15 +105,15 @@ const GroupChatComp = () => {
                 }
                 {searchResults.length && conversationList.length ? <h5>Exsisting Chats</h5> : ""}
 
-                <div className="px-2 py-2">
+                <div className="px-3 py-2 t">
                     {
                         conversationList.map((conversation: any, i) =>
                             <NavLink to={`/chat/${conversation.event_key}`} key={i}
-                                className={({ isActive }) => `${isActive ? "active_chat" : ""}  col-10 p-0  m-0 cursor-pointer border-bottom-1`}
+                                className={({ isActive }) => `${isActive ? "active_chat" : ""}  col-10 p-0  m-0 cursor-pointer `}
                                 onClick={() => {
                                     setChat(conversation)
                                 }}>
-                                <div className="row">
+                                <div className="row conversation_box">
                                     <div className="col-2">
                                         {/* <img src="" alt="" /> */}
                                         <div className="user_name_nav_wrapper  d-flex align-items-center cursor_pointer ">
@@ -148,13 +148,13 @@ const GroupChatComp = () => {
                     }
                 </div>
             </div>
-            <div className="d-xs-none d-sm-inline col-sm-12 col-md-8 bg-cyan-50 conversation_detail_div ">
+            <div className={`${showMsgContainerOnly ? " d-sm-inline col-sm-12 col-md-8 bg-cyan-50 conversation_detail_div " : "d-none"}`}>
                 <SelectedChatContext.Provider value={chat}>
                     <Outlet />
                 </SelectedChatContext.Provider>
             </div>
 
-        </div>
+        </div >
     )
 }
 

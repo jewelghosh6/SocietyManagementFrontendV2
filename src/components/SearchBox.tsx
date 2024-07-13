@@ -31,7 +31,7 @@ const SearchBox: FC<SearchBoxProps> = ({ onSearch }) => {
                 type="text"
                 value={inputValue}
                 onChange={handleChange}
-                placeholder="Search..."
+                placeholder="Search for Users & Groups"
             />
             {inputValue ? <RxCross2 className='position-absolute search_clear_btn' size={24} onClick={clearSearchHandler} /> : <></>}
 

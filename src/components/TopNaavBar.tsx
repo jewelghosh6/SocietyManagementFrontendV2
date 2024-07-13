@@ -11,6 +11,7 @@ import { axiosInstance } from "../utils/axiosInstance";
 import config from "../environments/config";
 import toast from "react-hot-toast";
 import { GoPasskeyFill } from "react-icons/go";
+import useSocket from "../hooks/useSocket";
 
 
 
@@ -19,6 +20,8 @@ const TopNavBar = () => {
     // const axiosInstance = useAxiosInterceptors();
     const [userData] = useState(JSON.parse(localStorage.getItem("userData") ?? ""))
     const navigate = useNavigate();
+    const socket = useSocket();
+
 
     const signOutButtonClickHandler = () => {
         toast.promise(signOutButtonClick(), {
@@ -31,6 +34,8 @@ const TopNavBar = () => {
             },
             error: (err) => {
                 console.error(err);
+                localStorage.clear();
+                navigate("/auth/sign-in")
                 return "Error in Signing Out"
             }
         })
@@ -41,6 +46,7 @@ const TopNavBar = () => {
         console.log("sign out button clicked");
         try {
             let resp = await axiosInstance.post(`${config.API_URL}/auth/sign-out`, { refreshToken: refreshToken });
+            socket?.disconnect();
             return resp;
         } catch (error) {
             throw error;

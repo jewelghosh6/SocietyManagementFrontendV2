@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import SideNavBarForDashboard from '../components/SideNavBarForDashboard'
 import TopNavBar from '../components/TopNaavBar'
-import { FC, createContext, useState } from 'react';
+import { FC, createContext, useEffect, useState } from 'react';
 
 import { MdBallot, MdManageAccounts, MdMeetingRoom } from 'react-icons/md';
 import { RiBillFill, RiDashboard3Fill } from 'react-icons/ri';
@@ -9,6 +9,8 @@ import { IoIosPeople } from 'react-icons/io';
 import { FaNoteSticky, FaUserSecret } from 'react-icons/fa6';
 import { PiChatsFill } from 'react-icons/pi';
 import { BsCalendarEventFill } from 'react-icons/bs';
+import useSocket from '../hooks/useSocket';
+import toast from 'react-hot-toast';
 // import axios from 'axios';
 // import config from '../environments/config';
 
@@ -19,6 +21,9 @@ export const UserSpecificMenuContext = createContext<any>([]);
 
 const LayoutMain: FC<LayoutMainProps> = () => {
     const [navBarColapsed, setNavBarCollapsed] = useState(false);
+
+    const socket = useSocket();
+
     // const navigate = useNavigate();
 
     // useEffect(() => {
@@ -122,6 +127,29 @@ const LayoutMain: FC<LayoutMainProps> = () => {
         },
     ]
 
+    useEffect(() => {
+        console.log({ socket });
+
+        if (socket) {
+            socket.on('direct_message', (newMessage) => {
+                console.log({ newMessage });
+                toast.success(
+                    <div>
+                        <strong>New Message from {newMessage.senderName}</strong>
+                        <p>{newMessage.message_text}</p>
+                    </div>)
+            });
+
+            socket.on('group_message', (newMessage) => {
+                console.log({ newMessage });
+                toast.success(
+                    <div>
+                        <strong>New Group Message from {newMessage.senderName}</strong>
+                        <p>{newMessage.message_text}</p>
+                    </div>)
+            });
+        }
+    }, [socket]);
 
     let FilteredMenus = MenuLinksArray.filter(element => permissions.includes(element.accessKey))
 

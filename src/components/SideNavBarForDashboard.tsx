@@ -20,7 +20,7 @@ const SideNavBarForDashboard: FC<SideNavBarForDashboardProps> = ({ setNavBarColl
   }
 
   return (
-    < div className={`sidebar z-2 bg_gradient sidenav_animation d-none d-md-block    ${navBarColapsed ? " px-2 pt-2 pb-3" : " px-3 pb-5"}`}
+    < div className={`sidebar z-5 bg_gradient sidenav_animation d-none d-md-block    ${navBarColapsed ? " px-2 pt-2 pb-3" : " px-3 pb-5"}`}
       style={{
         maxWidth: navBarColapsed ? "81px" : "200px",
         height: "100%",

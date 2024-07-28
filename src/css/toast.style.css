@@ -1,0 +1,44 @@
+/* styles.css */
+@keyframes drop-in {
+  0% {
+    transform: translateY(-150%) scale(0.8);
+    opacity: 0;
+    background-color: #2c2c2c; /* Dark grey start color */
+  }
+  60% {
+    transform: translateY(25%) scale(1.1);
+    opacity: 1;
+    background-color: #444444; /* Darker grey transition color */
+  }
+  80% {
+    transform: translateY(-5%) scale(0.95);
+    background-color: #333333; /* Dark grey transition color */
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    background-color: #1a1a1a; /* Black final color */
+  }
+}
+
+@keyframes drop-out {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    background-color: #575555; /* Black start color */
+  }
+  100% {
+    transform: translateY(-150%) scale(0.8);
+    opacity: 0;
+    background-color: #2c2c2c; /* Dark grey end color */
+  }
+}
+
+.custom-toast {
+  background-color: #1a1a1a; /* Black initial color */
+  color: #ffffff !important;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: drop-in 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards,
+    drop-out 0.4s ease-in 60s forwards !important;
+}

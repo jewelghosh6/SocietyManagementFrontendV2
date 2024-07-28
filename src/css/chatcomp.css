@@ -14,7 +14,7 @@
 
 .conversation_footer_input {
   /* display: flex; */
-  position: absolute !important;
+  /* position: absolute !important; */
   bottom: 0;
   left: 0;
   right: 0;
@@ -161,6 +161,16 @@
   border-bottom: 1px solid rgb(184, 116, 116) !important;
 } */
 .conversation_box:hover {
-  background-color: rgba(58, 242, 242, 0.3);
+  background-color: rgba(220, 168, 23, 0.3);
   border-radius: 5px;
+}
+
+/* // CSS to hide scrollbar when not scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

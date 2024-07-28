@@ -18,11 +18,17 @@ const useSocket = (): Socket | null => {
       });
 
       socket.on("connect", () => {
-        toast.success("Socket connected");
+        toast.success("Socket connected", {
+          className: "custom-toast",
+          duration: 4000, // Duration in milliseconds
+        });
       });
 
       socket.on("disconnect", () => {
-        toast.success("Socket disconnected");
+        toast.success("Socket disconnected", {
+          className: "custom-toast",
+          duration: 4000, // Duration in milliseconds
+        });
       });
 
       setCurrentSocket(socket);

@@ -13,6 +13,7 @@ import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
 import "./css/sign-in-page.css"
 import "./css/chatcomp.css"
+import "./css/toast.style.css"
 
 
 
@@ -34,7 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
     {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     <Toaster
-      position="top-right"
+      position="top-center"
       reverseOrder={false} />
     <App />
   </QueryClientProvider>

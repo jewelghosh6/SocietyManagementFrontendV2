@@ -30,6 +30,7 @@ import UserSectionLayout from "./Layouts/UserSectionLayout";
 import MyProfilePage from "./pages/MyProfilePage";
 import AccountSettings from "./pages/AccountSettings";
 import MessageContainerComp from "./components/MessageContainerComp";
+import ProtectedRoutesForLoggedInUser from "./shared/ProtectedRoutesForLoggedInUser";
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
 
         <Route path="/home" element={<NavBarForHome />} />
 
-        <Route path="/"  >
+        <Route path="/" element={<ProtectedRoutesForLoggedInUser />} >
           <Route path="/auth/sign-in" element={<SignInPage />} />
           <Route path="/auth/sign-up" element={<SignUpPage />} />
           <Route path="/auth/forget-password" element={<ForgetPasswordPage />} />

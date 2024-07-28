@@ -88,6 +88,8 @@ const GroupChatComp = () => {
 
     }
 
+ 
+
 
 
     return (
@@ -204,6 +206,7 @@ const GroupChatComp = () => {
                     <Outlet />
                 </SelectedChatContext.Provider>
             </div>
+            {/* <button onClick={sendNotification}>Send Notification</button> */}
 
         </div >
     )

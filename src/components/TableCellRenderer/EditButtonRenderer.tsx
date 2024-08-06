@@ -8,7 +8,7 @@ interface EditButtonProps {
 
 const EditButtonRenderer: FC<EditButtonProps> = ({ onClick, data }) => {
     const handleClick = () => {
-        console.log("row>>>>>", data);
+        // console.log("row>>>>>", data);
 
         onClick(data); // Pass the row data to the onClick handler
     };

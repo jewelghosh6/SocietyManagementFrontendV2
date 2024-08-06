@@ -63,7 +63,21 @@ const LayoutMain: FC<LayoutMainProps> = () => {
             accessKey: "can_view_dashboard",
             url: "/dashboard",
             icon: <RiDashboard3Fill />,
-            title: "Dashboard"
+            title: "Dashboard",
+            // submenu: [
+            //     {
+            //         accessKey: "can_view_dashboard_overview",
+            //         url: "/dashboard/overview",
+            //         icon: <RiDashboard3Fill />,
+            //         title: "Overview"
+            //     },
+            //     {
+            //         accessKey: "can_view_dashboard_stats",
+            //         url: "/dashboard/stats",
+            //         icon: <RiDashboard3Fill />,
+            //         title: "Statistics"
+            //     }
+            // ]
         },
         {
             accessKey: "can_manage_user",
@@ -83,12 +97,12 @@ const LayoutMain: FC<LayoutMainProps> = () => {
             icon: <MdMeetingRoom />,
             title: "My Flat"
         },
-        {
-            accessKey: "can_allot_new_flats_to_user",
-            url: "/flat-allotment",
-            icon: <MdBallot />,
-            title: "Flat Allotment"
-        },
+        // {
+        //     accessKey: "can_allot_new_flats_to_user",
+        //     url: "/flat-allotment",
+        //     icon: <MdBallot />,
+        //     title: "Flat Allotment"
+        // },
         {
             accessKey: "can_manage_bills_section",
             url: "/manage-bills",

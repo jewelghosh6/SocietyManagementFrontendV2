@@ -1,9 +1,12 @@
-import WebcamCapture from "./shared/WebcamCapture"
+// import WebcamCapture from "./shared/WebcamCapture"
 
 const BillsComp = () => {
   return (
-    <div>BillsComp
-      <WebcamCapture />
+    <div className="m-3  p-4 shadow h-100">
+      <div>
+        <h5>Manage Bills</h5>
+      </div>
+      {/* <WebcamCapture /> */}
     </div>
   )
 }

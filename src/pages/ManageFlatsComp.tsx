@@ -5,13 +5,13 @@ import { ColDef } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
-import EditButtonRenderer from './TableCellRenderer/EditButtonRenderer';
-import DeleteButtonRenderer from './TableCellRenderer/DeleteButtonRenderer';
-import AddEditFlatsModal from './Modals/AddEditFlatsModal';
+import EditButtonRenderer from '../components/TableCellRenderer/EditButtonRenderer';
+import DeleteButtonRenderer from '../components/TableCellRenderer/DeleteButtonRenderer';
+import AddEditFlatsModal from '../components/Modals/AddEditFlatsModal';
 import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../utils/axiosInstance';
 import config from '../environments/config';
-import FlatAlocationCellRenderer from './TableCellRenderer/FlatAlocationCellRenderer';
+import FlatAlocationCellRenderer from '../components/TableCellRenderer/FlatAlocationCellRenderer';
 
 
 

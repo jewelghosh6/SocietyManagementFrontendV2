@@ -14,6 +14,9 @@ import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
 import "./css/sign-in-page.css"
 import "./css/chatcomp.css"
 import "./css/toast.style.css"
+import "./css/dashboard.css"
+
+
 
 
 

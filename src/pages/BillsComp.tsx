@@ -7,6 +7,11 @@ const BillsComp = () => {
         <h5>Manage Bills</h5>
       </div>
       {/* <WebcamCapture /> */}
+      <div className="d-flex justify-content-end">
+        <button className="btn btn_primary me-4">Configure Bills</button>
+        <button className="btn btn_primary">Generated Bills</button>
+        {/* <button>Configure Bills</button> */}
+      </div>
     </div>
   )
 }

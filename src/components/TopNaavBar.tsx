@@ -84,23 +84,25 @@ const TopNavBar = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        {UnreadMessageList.length > 0 ? (
-                            UnreadMessageList.map((item: any, i: number) => (
-                                <Dropdown.Item key={i} href="#/action-1" className="d-flex flex-column align-items-start">
+                        <div className="msg_dropdown_conntainer">
+                            {UnreadMessageList.length > 0 ? (
+                                UnreadMessageList.map((item: any, i: number) => (
+                                    <Dropdown.Item key={i} href="#/action-1" className="d-flex flex-column align-items-start">
+                                        <div>
+                                            <strong>New Group Message from {item.senderName}</strong>
+                                            <p className="mb-0">{item.message_text}</p>
+                                            <span>{DateUtilityFunction.formatTimeDifference(new Date(item.created_at))}</span>
+                                        </div>
+                                    </Dropdown.Item>
+                                ))
+                            ) : (
+                                <Dropdown.Item href="#/action-1" className="d-flex flex-column align-items-start">
                                     <div>
-                                        <strong>New Group Message from {item.senderName}</strong>
-                                        <p className="mb-0">{item.message_text}</p>
-                                        <span>{DateUtilityFunction.formatTimeDifference(new Date(item.created_at))}</span>
+                                        <span>No unread messages</span>
                                     </div>
                                 </Dropdown.Item>
-                            ))
-                        ) : (
-                            <Dropdown.Item href="#/action-1" className="d-flex flex-column align-items-start">
-                                <div>
-                                    <span>No unread messages</span>
-                                </div>
-                            </Dropdown.Item>
-                        )}
+                            )}
+                        </div>
                     </Dropdown.Menu>
                 </Dropdown>
 

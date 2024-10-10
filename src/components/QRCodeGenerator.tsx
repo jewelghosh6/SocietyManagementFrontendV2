@@ -7,6 +7,8 @@ interface QRCodeGeneratorProps {
 }
 
 const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ upiUrl }) => {
+    console.log(upiUrl);
+    
     return (
         <div>
             {/* <QRCode value={upiUrl} /> */}

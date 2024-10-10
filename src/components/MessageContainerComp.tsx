@@ -3,18 +3,18 @@ import { IoIosAttach } from "react-icons/io";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { PiChecks } from "react-icons/pi";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
 import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { axiosInstance } from "../utils/axiosInstance";
-import formatToTimeString from "../utils/formatDateTime";
+// import formatToTimeString from "../utils/formatDateTime";
 import VoiceRecognition from "./shared/VoiceRecognition";
 import { MessageTailExt } from "./shared/MessageTail";
 import useSocket from "../hooks/useSocket";
 import { SelectedChatContext } from "./GroupChatComp";
 import DateUtilityFunction from "../utils/formatDateTime";
-import { Image } from "react-bootstrap";
+// import { Image } from "react-bootstrap";
 
 const MessageContainerComp = () => {
     const socket = useSocket();
@@ -85,7 +85,7 @@ const MessageContainerComp = () => {
         scrollToBottom();
     }, [messageList]);
 
-    const sendMessage = (data = {}) => {
+    const sendMessage = () => {
         setMessageList((prevMessages: any[]) => [...prevMessages, { message_text: transcript, user_id: userData.id, created_at: new Date() }]);
         scrollToBottom();
 
@@ -232,13 +232,13 @@ const MessageContainerComp = () => {
                                                 padding: '0px 2px',
                                             }}
                                         >
-                                            <RxCross2 size={18} color="white" style={{ margin: "-5px 0 0" }} />
+                                            {/* <RxCross2 size={18} color="white" style={{ margin: "-5px 0 0" }} /> */}
                                         </span>
-                                        <Image
+                                        {/* <Image
                                             className="w-100"
                                             src="https://res.cloudinary.com/dfo1wgior/image/upload/v1720382487/pfj9sfyqhvzhpljujr4e.png"
                                             alt="test_img"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 {/* <div className="col-4 col-md-3 position-relative">

@@ -29,6 +29,8 @@ const TopNavBar = () => {
     useEffect(() => {
         console.log({ UnreadMessageList });
         setUnreadMsgList(UnreadMessageList)
+        console.log(unreadMsgList);
+        
     }, [UnreadMessageList])
 
 

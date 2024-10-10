@@ -28,6 +28,7 @@ jobs:
       uses: webfactory/ssh-agent@v0.5.4
       with:
         ssh-private-key: ${{ secrets.LIGHTSAIL_PRIVATE_KEY }}
+        
 
     - name: Deploy to AWS Lightsail
       run: |

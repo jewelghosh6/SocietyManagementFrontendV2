@@ -31,7 +31,7 @@ jobs:
 
     - name: Deploy to AWS Lightsail
       run: |
-        ssh -o StrictHostKeyChecking=no bitmani@13.235.99.165 "cd /home/bitmani/SocietyManagementFrontendV2 && git pull origin main && npm install && pm2 restart all" # or use another deploy command like docker-compose
+        ssh -o StrictHostKeyChecking=no bitnami@13.235.99.165 "cd /home/bitnami/SocietyManagementFrontendV2 && git pull origin develop && npm install && pm2 restart all" # Update to correct branch if necessary
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

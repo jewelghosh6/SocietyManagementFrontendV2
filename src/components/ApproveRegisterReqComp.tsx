@@ -126,7 +126,10 @@ const ApproveRegisterReqComp = () => {
             })
             console.log("/user/register-request/approve", resp.data);
             if (resp.data.success) {
-                toast.success("User request approved");
+                toast.success("User request approved", {
+                    className: "custom-toast",
+                    duration: 4000, // Duration in milliseconds
+                });
                 navigate("/manage-users/register-request")
             }
 

@@ -3,7 +3,6 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useState, useEffect, useRef } from 'react';
 import animation from "../../Lottie/voice.json"
 
-
 interface SpeechRecognitionEvent extends Event {
     resultIndex: number;
     results: SpeechRecognitionResultList;
@@ -13,14 +12,16 @@ interface SpeechRecognitionErrorEvent extends Event {
     error: string;
 }
 
-type VoiceRecognitionProps = {
-    setTranscript: (a: any) => void;
+interface VoiceRecognitionProps {
+    setTranscript: (transcript: string) => void;
+    onChange?: (event: any) => void; // Optional onChange prop
 }
 
 const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
 
-const VoiceRecognition: React.FC<VoiceRecognitionProps> = ({ setTranscript }) => {
+const VoiceRecognition: React.FC<VoiceRecognitionProps> = ({ setTranscript, onChange }) => {
     const [listening, setListening] = useState<boolean>(false);
+    const playerRef = useRef<Player | null>(null);
 
     useEffect(() => {
         if (!SpeechRecognition) {
@@ -43,12 +44,19 @@ const VoiceRecognition: React.FC<VoiceRecognitionProps> = ({ setTranscript }) =>
         };
 
         recognition.onresult = (event: SpeechRecognitionEvent) => {
+            let finalTranscript = '';
             let interimTranscript = '';
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 if (event.results[i].isFinal) {
-                    setTranscript((prevTranscript: string) => prevTranscript + " " + event.results[i][0].transcript);
+                    finalTranscript += event.results[i][0].transcript + ' ';
                 } else {
                     interimTranscript += event.results[i][0].transcript;
+                }
+            }
+            if (finalTranscript) {
+                setTranscript(finalTranscript.trim());
+                if (onChange) {
+                    onChange({ target: { value: finalTranscript.trim() } });
                 }
             }
         };
@@ -68,28 +76,18 @@ const VoiceRecognition: React.FC<VoiceRecognitionProps> = ({ setTranscript }) =>
         }
     };
 
-    const playerRef = useRef<Player | null>(null); // Explicitly type the ref as Player or null
-
-    // const handleLottieIconClick = () => {
-    //     if (playerRef.current) {
-    //         playerRef.current.play();
-    //     }
-    // };
-
     return (
         <div>
-            {/* <button className='btn btn_primary' onClick={handleListen}>
-                {listening ? 'Stop Listening' : 'Start Listening'}
-            </button> */}
-            <div className=" voice_type_msg_input " onClick={handleListen}>
-                <Player className='cursor_pointer'
-                    src={animation} ref={playerRef}
+            <div className="voice_type_msg_input" onClick={handleListen}>
+                <Player
+                    className='cursor_pointer'
+                    src={animation}
+                    ref={playerRef}
                     style={{ width: "46px", height: "46px" }}
                     loop={false}
-                    autoplay={listening} // Set autoplay to false to control playback manually
+                    autoplay={listening}
                 />
             </div>
-            {/* <p>{transcript}</p> */}
         </div>
     );
 };

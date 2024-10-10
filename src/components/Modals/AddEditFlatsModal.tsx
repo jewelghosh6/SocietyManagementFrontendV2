@@ -46,7 +46,10 @@ const AddEditFlatsModal: FC<MyModalProps> = ({ type, data, show, handleClose }) 
             let resp = await axiosInstance.post('/flats/add', formData)
             console.log("resp", resp);
             if (resp.data.success) {
-                toast.success(resp.data.message)
+                toast.success(resp.data.message, {
+                    className: "custom-toast",
+                    duration: 4000, // Duration in milliseconds
+                })
                 handleModalClose();
             }
         } catch (error) {
@@ -60,7 +63,10 @@ const AddEditFlatsModal: FC<MyModalProps> = ({ type, data, show, handleClose }) 
             let resp = await axiosInstance.patch(`/flats/update/${formData.id}`, formData)
             console.log("resp", resp);
             if (resp.data.success) {
-                toast.success(resp.data.message)
+                toast.success(resp.data.message, {
+                    className: "custom-toast",
+                    duration: 4000, // Duration in milliseconds
+                })
                 handleModalClose();
             }
         } catch (error) {

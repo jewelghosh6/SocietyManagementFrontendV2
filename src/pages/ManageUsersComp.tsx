@@ -4,15 +4,15 @@ import { AgGridReact } from "ag-grid-react"; // React Grid Logic
 
 import { ColDef } from "ag-grid-community";
 import config from "../environments/config";
-import EditButtonRenderer from "./TableCellRenderer/EditButtonRenderer";
-import DeleteButtonRenderer from "./TableCellRenderer/DeleteButtonRenderer";
+import EditButtonRenderer from "../components/TableCellRenderer/EditButtonRenderer";
+import DeleteButtonRenderer from "../components/TableCellRenderer/DeleteButtonRenderer";
 // import ManageUsersModal from "./Modals/ManageUsersModal";
-import RegisterRequestDropdown from "./RegisterRequestDropdown";
+import RegisterRequestDropdown from "../components/RegisterRequestDropdown";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Player } from '@lottiefiles/react-lottie-player';
 import animation from "../Lottie/refresh-btn-lottie.json"
-import RoleBadge from "./RoleBadge";
+import RoleBadge from "../components/RoleBadge";
 import { axiosInstance } from "../utils/axiosInstance";
 
 

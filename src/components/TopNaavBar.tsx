@@ -1,7 +1,7 @@
 import { FiMessageSquare } from "react-icons/fi";
 import { IoNotificationsOutline, IoSettingsSharp } from "react-icons/io5";
 import ThemeToggleComp from "./ThemeToggleComp";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DrawerForDashboardMenu from "./DrawerForDashMenu";
 import { Dropdown } from "react-bootstrap";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -11,14 +11,26 @@ import { axiosInstance } from "../utils/axiosInstance";
 import config from "../environments/config";
 import toast from "react-hot-toast";
 import { GoPasskeyFill } from "react-icons/go";
+import useSocket from "../hooks/useSocket";
+import { UnreadMessageListContext } from "../Layouts/LayoutMain";
+import DateUtilityFunction from "../utils/formatDateTime";
 
 
 
 const TopNavBar = () => {
+    const UnreadMessageList = useContext(UnreadMessageListContext);
     const [refreshToken] = useState(localStorage.getItem("refreshToken"));
     // const axiosInstance = useAxiosInterceptors();
     const [userData] = useState(JSON.parse(localStorage.getItem("userData") ?? ""))
     const navigate = useNavigate();
+    const socket = useSocket();
+    const [unreadMsgList, setUnreadMsgList] = useState([]);
+
+    useEffect(() => {
+        console.log({ UnreadMessageList });
+        setUnreadMsgList(UnreadMessageList)
+    }, [UnreadMessageList])
+
 
     const signOutButtonClickHandler = () => {
         toast.promise(signOutButtonClick(), {
@@ -31,6 +43,8 @@ const TopNavBar = () => {
             },
             error: (err) => {
                 console.error(err);
+                localStorage.clear();
+                navigate("/auth/sign-in")
                 return "Error in Signing Out"
             }
         })
@@ -41,6 +55,7 @@ const TopNavBar = () => {
         console.log("sign out button clicked");
         try {
             let resp = await axiosInstance.post(`${config.API_URL}/auth/sign-out`, { refreshToken: refreshToken });
+            socket?.disconnect();
             return resp;
         } catch (error) {
             throw error;
@@ -52,17 +67,46 @@ const TopNavBar = () => {
             <DrawerForDashboardMenu />
             <div className="d-flex align-items-center topnav_options">
                 <ThemeToggleComp />
-                <div className="mx-3 position-relative"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Messages">
-                    <FiMessageSquare className="cursor_pointer" size={"22px"} />
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success "
-                    >
-                        5
-                        <span className="visually-hidden">unread messages</span>
-                    </span>
-                </div>
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic" className="d-flex align-items-center">
+                        <div
+                            className="mx-3 position-relative"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Messages"
+                        >
+                            <FiMessageSquare className="cursor-pointer" color="black" size={"22px"} />
+                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                {UnreadMessageList.length}
+                                <span className="visually-hidden">unread messages</span>
+                            </span>
+                        </div>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <div className="msg_dropdown_conntainer">
+                            {UnreadMessageList.length > 0 ? (
+                                UnreadMessageList.map((item: any, i: number) => (
+                                    <Dropdown.Item key={i} href="#/action-1" className="d-flex flex-column align-items-start">
+                                        <div>
+                                            <strong>New Group Message from {item.senderName}</strong>
+                                            <p className="mb-0">{item.message_text}</p>
+                                            <span>{DateUtilityFunction.formatTimeDifference(new Date(item.created_at))}</span>
+                                        </div>
+                                    </Dropdown.Item>
+                                ))
+                            ) : (
+                                <Dropdown.Item href="#/action-1" className="d-flex flex-column align-items-start">
+                                    <div>
+                                        <span>No unread messages</span>
+                                    </div>
+                                </Dropdown.Item>
+                            )}
+                        </div>
+                    </Dropdown.Menu>
+                </Dropdown>
+
+
                 <div className="ms-3 me-4 position-relative"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"

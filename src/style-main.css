@@ -262,6 +262,28 @@ body::-webkit-scrollbar-thumb {
   border-radius: 14px !important;
 }
 
+.msg_dropdown_conntainer {
+  max-height: 50vh;
+  overflow-y: scroll; /* or 'scroll' */
+}
+
+.msg_dropdown_conntainer::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.msg_dropdown_conntainer::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+.msg_dropdown_conntainer::-webkit-scrollbar-thumb {
+  background: #68dcf6; /* Scrollbar thumb color */
+  /* border-radius: 6px; Rounded corners for the thumb */
+}
+
+.msg_dropdown_conntainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color when hovering over the thumb */
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;

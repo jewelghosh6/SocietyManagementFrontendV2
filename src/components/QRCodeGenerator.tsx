@@ -1,15 +1,17 @@
 // QRCodeGenerator.tsx
 import React from 'react';
-import QRCode from 'qrcode.react';
+// import QRCode from 'qrcode.react';
 
 interface QRCodeGeneratorProps {
     upiUrl: string;
 }
 
 const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ upiUrl }) => {
+    console.log(upiUrl);
+    
     return (
         <div>
-            <QRCode value={upiUrl} />
+            {/* <QRCode value={upiUrl} /> */}
         </div>
     );
 };

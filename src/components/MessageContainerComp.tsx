@@ -3,18 +3,18 @@ import { IoIosAttach } from "react-icons/io";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { PiChecks } from "react-icons/pi";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
 import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { axiosInstance } from "../utils/axiosInstance";
-import formatToTimeString from "../utils/formatDateTime";
+// import formatToTimeString from "../utils/formatDateTime";
 import VoiceRecognition from "./shared/VoiceRecognition";
 import { MessageTailExt } from "./shared/MessageTail";
 import useSocket from "../hooks/useSocket";
 import { SelectedChatContext } from "./GroupChatComp";
 import DateUtilityFunction from "../utils/formatDateTime";
-import { Image } from "react-bootstrap";
+// import { Image } from "react-bootstrap";
 
 const MessageContainerComp = () => {
     const socket = useSocket();
@@ -39,6 +39,8 @@ const MessageContainerComp = () => {
             axiosInstance
                 .get(`/chat/get-conversation-info?chatEventKey=${chatEventKey}`)
                 .then((res) => {
+                    console.log("---",res);
+                    
                     setConversationDettail(res.data.data);
                     fetchMessagesAndSetMessagesList(res.data.data.participants.sender.conversation_id);
                 })
@@ -83,7 +85,7 @@ const MessageContainerComp = () => {
         scrollToBottom();
     }, [messageList]);
 
-    const sendMessage = (data = {}) => {
+    const sendMessage = () => {
         setMessageList((prevMessages: any[]) => [...prevMessages, { message_text: transcript, user_id: userData.id, created_at: new Date() }]);
         scrollToBottom();
 
@@ -198,14 +200,14 @@ const MessageContainerComp = () => {
             </div>
             <form onSubmit={handleSubmit(sendMessage)}>
                 <div className="">
-                    {/* <div
+                     <div
                         className="bg-gray-200 d-flex"
                         style={{ minHeight: '150px', overflow: 'hidden', position: 'relative' }}
                         ref={msgContainerRef}
                     >
                         <div className="position-relative">
                             <div className="d-flex align-items-center" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
-                                <div className="col-4 col-md-3 position-relative">
+                                {/* <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span className="position-absolute right-0 top-0 cursor-pointer">
                                             <RxCross2 size={22} color="black" />
@@ -216,7 +218,7 @@ const MessageContainerComp = () => {
                                             alt="test_img"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span
@@ -230,16 +232,16 @@ const MessageContainerComp = () => {
                                                 padding: '0px 2px',
                                             }}
                                         >
-                                            <RxCross2 size={18} color="white" style={{ margin: "-5px 0 0" }} />
+                                            {/* <RxCross2 size={18} color="white" style={{ margin: "-5px 0 0" }} /> */}
                                         </span>
-                                        <Image
+                                        {/* <Image
                                             className="w-100"
                                             src="https://res.cloudinary.com/dfo1wgior/image/upload/v1720382487/pfj9sfyqhvzhpljujr4e.png"
                                             alt="test_img"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
-                                <div className="col-4 col-md-3 position-relative">
+                                {/* <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span className="position-absolute right-0 top-0 cursor-pointer">
                                             <RxCross2 size={22} color="black" />
@@ -250,8 +252,8 @@ const MessageContainerComp = () => {
                                             alt="test_img"
                                         />
                                     </div>
-                                </div>
-                                <div className="col-4 col-md-3 position-relative">
+                                </div> */}
+                                {/* <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span className="position-absolute right-0 top-0 cursor-pointer">
                                             <RxCross2 size={22} color="black" />
@@ -262,10 +264,10 @@ const MessageContainerComp = () => {
                                             alt="test_img"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
                     <div className="conversation_footer_input bg-green-100 row mx-0 px-1 py-2">
                         <div className="col-9 col-sm-10 d-flex justify-content-center align-items-center p-0">
                             <div className="d-flex align-items-center w-100">

@@ -17,13 +17,9 @@ const GroupChatComp = () => {
     const navigate = useNavigate()
     const [chat, setChat] = useState<any>({});
 
-
-
-
     const location = useLocation();
     const isMobileMedQuery = useMediaQuery('(max-width: 767px)');
     const regex = /^\/chat\/[A-Za-z0-9]{2,}$/;
-    ;
     const [showMsgContainerOnly, setShowMsgContainerOnly] = useState(regex.test(location.pathname) && isMobileMedQuery);
 
     useEffect(() => {

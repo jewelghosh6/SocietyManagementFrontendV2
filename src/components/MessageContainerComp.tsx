@@ -39,6 +39,8 @@ const MessageContainerComp = () => {
             axiosInstance
                 .get(`/chat/get-conversation-info?chatEventKey=${chatEventKey}`)
                 .then((res) => {
+                    console.log("---",res);
+                    
                     setConversationDettail(res.data.data);
                     fetchMessagesAndSetMessagesList(res.data.data.participants.sender.conversation_id);
                 })
@@ -198,14 +200,14 @@ const MessageContainerComp = () => {
             </div>
             <form onSubmit={handleSubmit(sendMessage)}>
                 <div className="">
-                    {/* <div
+                     <div
                         className="bg-gray-200 d-flex"
                         style={{ minHeight: '150px', overflow: 'hidden', position: 'relative' }}
                         ref={msgContainerRef}
                     >
                         <div className="position-relative">
                             <div className="d-flex align-items-center" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
-                                <div className="col-4 col-md-3 position-relative">
+                                {/* <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span className="position-absolute right-0 top-0 cursor-pointer">
                                             <RxCross2 size={22} color="black" />
@@ -216,7 +218,7 @@ const MessageContainerComp = () => {
                                             alt="test_img"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span
@@ -239,7 +241,7 @@ const MessageContainerComp = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="col-4 col-md-3 position-relative">
+                                {/* <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span className="position-absolute right-0 top-0 cursor-pointer">
                                             <RxCross2 size={22} color="black" />
@@ -250,8 +252,8 @@ const MessageContainerComp = () => {
                                             alt="test_img"
                                         />
                                     </div>
-                                </div>
-                                <div className="col-4 col-md-3 position-relative">
+                                </div> */}
+                                {/* <div className="col-4 col-md-3 position-relative">
                                     <div className="position-relative">
                                         <span className="position-absolute right-0 top-0 cursor-pointer">
                                             <RxCross2 size={22} color="black" />
@@ -262,10 +264,10 @@ const MessageContainerComp = () => {
                                             alt="test_img"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
                     <div className="conversation_footer_input bg-green-100 row mx-0 px-1 py-2">
                         <div className="col-9 col-sm-10 d-flex justify-content-center align-items-center p-0">
                             <div className="d-flex align-items-center w-100">

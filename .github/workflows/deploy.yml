@@ -38,7 +38,7 @@ jobs:
           if pm2 describe app_name > /dev/null; then 
             pm2 restart app_name; 
           else 
-            pm2 start npm start --name app_name -- run start; 
+            pm2 start npm --name app_name -- run start; 
           fi
         "
 

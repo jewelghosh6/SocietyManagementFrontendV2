@@ -29,12 +29,15 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.LIGHTSAIL_PRIVATE_KEY }}
         
-        
-    - name: Deploy to AWS Lightsail
+    - name: Start or Restart the App with PM2
       run: |
-        ssh -o StrictHostKeyChecking=no bitnami@13.235.99.165 "cd /home/bitnami/SocietyManagementFrontendV2 && git pull origin develop && npm install && pm2 restart all"
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        ssh -o StrictHostKeyChecking=no bitnami@13.235.99.165 "
+          cd /home/bitnami/SocietyManagementFrontendV2 && 
+          git pull origin develop && 
+          npm install &&
+          pm2 describe app_name || pm2 start npm --name app_name -- run start && 
+          pm2 restart app_name
+        "
 
     - name: Notify Success
       run: echo "Deployment to AWS Lightsail successful!"

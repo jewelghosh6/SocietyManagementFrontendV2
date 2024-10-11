@@ -29,6 +29,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.LIGHTSAIL_PRIVATE_KEY }}
         
+        
     - name: Deploy to AWS Lightsail
       run: |
         ssh -o StrictHostKeyChecking=no bitnami@13.235.99.165 "cd /home/bitnami/SocietyManagementFrontendV2 && git pull origin develop && npm install && pm2 restart all"

@@ -35,8 +35,11 @@ jobs:
           cd /home/bitnami/SocietyManagementFrontendV2 && 
           git pull origin develop && 
           npm install &&
-          pm2 describe app_name || pm2 start npm --name app_name -- run start && 
-          pm2 restart app_name
+          if pm2 describe app_name > /dev/null; then 
+            pm2 restart app_name; 
+          else 
+            pm2 start npm --name app_name -- run start; 
+          fi
         "
 
     - name: Notify Success

@@ -35,10 +35,10 @@ jobs:
           cd /opt/bitnami/SocietyManagementFrontendV2 && 
           git pull origin develop && 
           npm install &&
-          if pm2 describe app_name > /dev/null; then 
-            pm2 restart app_name; 
+          if pm2 describe app_my_society_frontend > /dev/null; then 
+            pm2 restart app_my_society_frontend; 
           else 
-            pm2 start npm --name app_name -- run start; 
+            pm2 start npm --name app_my_society_frontend -- run start; 
           fi
         "
 

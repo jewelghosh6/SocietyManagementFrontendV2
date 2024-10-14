@@ -43,7 +43,8 @@ const NavBarForHome = () => {
         </div>
       </div>
       <div>
-        <h2 className="m-5 text-center shadow">Jewel's society</h2>
+        <h2 className="m-5 text-center shadow">Jewel's society  </h2>
+        <span className="m-5 text-center shadow"> completed CI/CD with github actions & AWS lightsail</span>
       </div>
     </>
   );

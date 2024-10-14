@@ -19,10 +19,10 @@ jobs:
       with:
         node-version: '16' # Change as per your version
 
-    - name: Install Dependencies
-      run: |
-        npm install 
-        npm run build 
+    # - name: Install Dependencies
+    #   run: |
+    #     npm install 
+    #     npm run build 
 
     - name: Set up SSH agent
       uses: webfactory/ssh-agent@v0.5.4
@@ -34,7 +34,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no bitnami@13.127.103.18 "
           cd /opt/bitnami/SocietyManagementFrontendV2 && git checkout develop &&
           git pull origin develop && 
-          npm install &&
+          npm install && npm run build &&
           if pm2 describe app_my_society_frontend > /dev/null; then 
             pm2 restart app_my_society_frontend; 
           else 

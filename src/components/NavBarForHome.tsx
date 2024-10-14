@@ -43,7 +43,7 @@ const NavBarForHome = () => {
         </div>
       </div>
       <div>
-        <h2 className="m-5 text-center">Jewel's society</h2>
+        <h2 className="m-5 text-center shadow">Jewel's society</h2>
       </div>
     </>
   );

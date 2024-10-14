@@ -31,7 +31,7 @@ jobs:
         
     - name: Start or Restart the App with PM2
       run: |
-        ssh -o StrictHostKeyChecking=no bitnami@13.127.103.18"
+        ssh -o StrictHostKeyChecking=no bitnami@13.127.103.18 "
           cd /opt/bitnami/SocietyManagementFrontendV2 && 
           git pull origin develop && 
           npm install &&
